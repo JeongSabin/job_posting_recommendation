@@ -7,6 +7,11 @@ import warnings
 from selenium.webdriver.common.keys import Keys
 import datetime
 
+
+# 카카오 ID와 PW 를 입력해주세요.
+ID = ''
+PW = ''
+
 options = webdriver.ChromeOptions()
 
 options.add_argument('lang=ko_KR')
@@ -35,8 +40,8 @@ driver.find_element('xpath', '//*[@id="gnbSignupBtn"]').click()
 time.sleep(1)
 driver.find_element('xpath', '//*[@id="MODAL_BODY"]/div[2]/div[2]/div[3]/div[1]/button').click()
 # username = driver.find_element("xpath", '//*[@id="id_email_2_label"]/span[1]')
-driver.find_element('name', 'email').send_keys('silber1201@naver.com')
-driver.find_element('name', 'password').send_keys('aiaidambi0708')
+driver.find_element('name', 'email').send_keys(f'{ID}')
+driver.find_element('name', 'password').send_keys(f'{PW}')
 
 driver.find_element('xpath', '//*[@id="login-form"]/fieldset/div[8]/button[1]').click()
 time.sleep(3)
