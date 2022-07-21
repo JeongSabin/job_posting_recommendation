@@ -65,7 +65,7 @@ place_list = []
 money_list = []
 number_list = []
 
-for i in range(1, 38):
+for i in range(8, 38):
 
     time.sleep(1)
     url = 'https://www.wanted.co.kr/wdlist/518?country=kr&job_sort=company.response_rate_order&years=-1&locations=all'
@@ -210,6 +210,7 @@ for i in range(1, 38):
     #-------------------------------------------------------------------------------------------------
             # 주소 크롤링
             driver.execute_script("window.scrollTo(0, 2400);")
+            time.sleep(0.5)
             try:
                 address = driver.find_element("xpath",
                                     '//*[@id="__next"]/div[3]/div[1]/div[1]/div[1]/div[2]/section[2]/div[2]').text
@@ -310,7 +311,7 @@ for i in range(1, 38):
 
 
 
-            time.sleep(0.2)
+
 
             category_list.append(category)
             page_url_list.append(page_url)
@@ -338,6 +339,7 @@ for i in range(1, 38):
         print('error', job_list[i], j)
         pass
     df.to_csv('./wanted/all/crawling_ERP전문가_{}.csv'.format(job_list[i]), index=False)
+    time.sleep(1)
     driver.back()
 
 time.sleep(1)
