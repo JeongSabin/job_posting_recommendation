@@ -184,9 +184,7 @@ for i in range(2, 6):
             print(employee)
             driver.back()
             time.sleep(2)
-            driver.find_element_by_xpath('//*[@id="__next"]/div[3]').click()
-            driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
-            time.sleep(0.1)
+
             # 회사 이미지 크롤링
             try:
                 picture_url = driver.find_element("css selector",
@@ -287,13 +285,12 @@ for i in range(2, 6):
             # 주소 크롤링
             time.sleep(1)
             try:
-                desired_y = (welfare_.size['height'] / 2) + welfare_.location['y']
+                button = driver.find_element("xpath", '//*[@id="__next"]/div[3]/div[1]/div[1]/div/div[2]/hr')
+                desired_y = (button.size['height'] / 2) + button.location['y']
                 current_y = (driver.execute_script('return window.innerHeight') / 2) + driver.execute_script(
                     'return window.pageYOffset')
                 scroll_y_by = desired_y - current_y
                 driver.execute_script("window.scrollBy(0, arguments[0]);", scroll_y_by)
-                # driver.execute_script('arguments[0].scrollIntoView(true);', button)
-                # driver.execute_script("window.scrollTo(0, button);")
                 time.sleep(1)
                 address = driver.find_element("xpath",
                                               '//*[@id="__next"]/div[3]/div[1]/div[1]/div[1]/div[2]/section[2]/div[2]/span[2]').text
@@ -325,7 +322,7 @@ for i in range(2, 6):
             time.sleep(0.2)
             driver.back()
             print('debug2')
-            print(address)
+
             df = pd.DataFrame({'category': [category], 'page_url': [page_url], 'picture_url': [picture_url],
                                'title': [title], 'company': [company],
                                'work': [work], 'qualification': [qualification], 'favor': [favor],
@@ -349,5 +346,3 @@ for i in range(2, 6):
     driver.back()
 
 time.sleep(1)
-
-
