@@ -96,7 +96,7 @@ for i in range(2, 6):
     while True:
         # 끝까지 스크롤 다운
         driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
-        break
+
         # 대기
         time.sleep(1.5)
 
