@@ -15,7 +15,7 @@ PW = ''
 options = webdriver.ChromeOptions()
 
 options.add_argument('lang=ko_KR')
-driver = webdriver.Chrome('./chromedriver.exe', options=options)
+driver = webdriver.Chrome('./chromedriver', options=options)
 
 warnings.filterwarnings('ignore')
 
@@ -36,17 +36,17 @@ number_list = []
 # 로그인
 driver.get('https://www.wanted.co.kr/wdlist/518?country=kr&job_sort=company.response_rate_order&years=-1&locations=all')
 time.sleep(1)
-driver.find_element('xpath', '//*[@id="gnbSignupBtn"]').click()
-time.sleep(1)
-driver.find_element('xpath', '//*[@id="MODAL_BODY"]/div[2]/div[2]/div[3]/div[1]/button').click()
-# username = driver.find_element("xpath", '//*[@id="id_email_2_label"]/span[1]')
-driver.find_element('name', 'email').send_keys(f'{ID}')
-driver.find_element('name', 'password').send_keys(f'{PW}')
+# driver.find_element('xpath', '//*[@id="gnbSignupBtn"]').click()
+# time.sleep(1)
+# driver.find_element('xpath', '//*[@id="MODAL_BODY"]/div[2]/div[2]/div[3]/div[1]/button').click()
+# # username = driver.find_element("xpath", '//*[@id="id_email_2_label"]/span[1]')
+# driver.find_element('name', 'email').send_keys(f'{ID}')
+# driver.find_element('name', 'password').send_keys(f'{PW}')
+#
+# driver.find_element('xpath', '//*[@id="login-form"]/fieldset/div[8]/button[1]').click()
+time.sleep(60)
 
-driver.find_element('xpath', '//*[@id="login-form"]/fieldset/div[8]/button[1]').click()
-time.sleep(3)
-
-for i in range(37,39):
+for i in range(2,5):
     driver.get('https://www.wanted.co.kr/wdlist/518?country=kr&job_sort=company.response_rate_order&years=-1&locations=all')
     time.sleep(5)
     button = driver.find_element('xpath', '//*[@id="__next"]/div[3]/article/div/div[2]/button/span[2]')
@@ -86,9 +86,11 @@ for i in range(37,39):
         # 페이지 링크, 그림 링크 text 위치
         page_url = driver.current_url
         print(page_url)
-        picture_url = driver.find_element("css selector", '#__next > div.JobDetail_cn__WezJh > div.JobDetail_contentWrapper__DQDB6 > div.JobDetail_relativeWrapper__F9DT5 > div > section.JobImage_JobImage__OFUyr > div > div:nth-child(1) > img').get_attribute('src')
-        print(picture_url)
-
+        try:
+            picture_url = driver.find_element("css selector", '#__next > div.JobDetail_cn__WezJh > div.JobDetail_contentWrapper__DQDB6 > div.JobDetail_relativeWrapper__F9DT5 > div > section.JobImage_JobImage__OFUyr > div > div:nth-child(1) > img').get_attribute('src')
+            print(picture_url)
+        except:
+            picture_url = '없음'
         # 제목과 회사 text 위치
         title = driver.find_element("xpath", '//*[@id="__next"]/div[3]/div[1]/div[1]/div/section[2]/h2').text
         print(title)
@@ -212,7 +214,9 @@ for i in range(37,39):
         money_list.append(all_money)
         # number_list.append(number)
         if NoSuchElementException:
-            flag = False
+            driver.back()
+            driver.back()
+            pass
 
         df = pd.DataFrame({'category': category_list, 'page_url': page_url_list, 'picture_url': picture_url_list, 'title': title_list, 'company': company_list,
                            'work': work_list, 'qualification': qualification_list, 'favor': favor_list, 'welfare': welfare_list, 'skill_stack': skill_stack_list,

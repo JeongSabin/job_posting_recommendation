@@ -3,6 +3,7 @@ from selenium.webdriver.chrome.options import Options
 import pandas as pd
 from selenium.common.exceptions import NoSuchElementException
 import time
+from selenium.webdriver.common.action_chains import ActionChains
 
 options = webdriver.ChromeOptions()
 # options.add_experimental_option("debuggerAddress", "127.0.0.1:9222")
@@ -10,7 +11,7 @@ options.add_experimental_option("prefs", {"profile.default_content_setting_value
 options.add_argument('lnag=ko_KR')
 # print('debug3')
 driver = webdriver.Chrome('./chromedriver', options=options)
-
+actions = ActionChains(driver)
 
 # 스크롤 내리기함수
 def infinite_loop():
@@ -62,12 +63,12 @@ place_list = []
 money_list = []
 number_list = []
 
-for i in range(36, 38):
+for i in range(2, 6):
     df2 = pd.DataFrame()
-    time.sleep(1)
+    time.sleep(3)
     url = 'https://www.wanted.co.kr/wdlist/518?country=kr&job_sort=company.response_rate_order&years=-1&locations=all'
     driver.get(url)
-    time.sleep(4)
+    time.sleep(3)
 
     #세모클릭
     button1 = driver.find_element('xpath','//*[@id="__next"]/div[3]/article/div/div[2]/button/span[2]')
@@ -95,7 +96,7 @@ for i in range(36, 38):
     while True:
         # 끝까지 스크롤 다운
         driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
-
+        break
         # 대기
         time.sleep(1.5)
 
@@ -107,21 +108,21 @@ for i in range(36, 38):
     print('스크롤 완료')
     time.sleep(4)
 
-    job_list = ["", '웹', '서버', '프론트엔드', '소프트웨어', '자바', '안드로이드', 'iOS', 'Nodejs', 'C++', '데이터엔지니어', 'DevOps', '파이썬', '시스템관리자', '머신러닝엔지니어',
+    job_list = ['웹', '서버', '프론트엔드', '소프트웨어', '자바', '안드로이드', 'iOS', 'Nodejs', 'C++', '데이터엔지니어', 'DevOps', '파이썬', '시스템관리자', '머신러닝엔지니어',
                 '데이터사이언티스트', '빅데이터엔지니어', 'QA', '기술지원', '개발매니저', '보안엔지니어', '프로덕트매니저', '블록체인엔지니어', 'PHP개발자', '임베디드개발자', '웹퍼블리셔',
                 '크로스플랫폼', '하드웨어엔지니어', 'DBA', 'NET개발자', '영상음성엔지니어', 'CTO', '그래픽스엔지니어', 'VR엔지니어', 'BI', '엔지니어', 'ERP전문가', '루비온레일즈개발자',
                 'CIO']
     # try:
-    crawling_list = ["",1951,1956,1532,1504,1304,638,585,548,533,527,515,520,433,446,344,331,304,284,281,243,182,166,144,151,124,109,116,95,80,79,55,54,38,30,29,18,10]
+    crawling_list = [1951,1956,1532,1504,1304,638,585,548,533,527,515,520,433,446,344,331,304,284,281,243,182,166,144,151,124,109,116,95,80,79,55,54,38,30,29,18,10]
 
-    for j in range(1, crawling_list[i - 1]+1):  # 2 , 12
+    for j in range(1, crawling_list[i]+1):  # 2 , 12
         try:
             df = pd.DataFrame() #2
             # 공고문 클릭
             button5 = driver.find_element('css selector', '#__next > div.JobList_cn__t_THp > div > div > div.List_List_container__JnQMS > ul > li:nth-child({}) > div > a > header'.format(j))
             driver.execute_script("arguments[0].click();", button5)
             time.sleep(2)
-
+            driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
             # 공고문 url 크롤링
             page_url = driver.current_url
             print(page_url)
@@ -131,10 +132,11 @@ for i in range(36, 38):
             driver.execute_script("arguments[0].click();", button4)
             time.sleep(2)
 
-            # 연봉, 직원수 화면까지 스크롤
+            # 연봉, 직원수 화면까지
+
             driver.execute_script("window.scrollTo(0, 700);")
 
-            time.sleep(3)
+            time.sleep(5)
 
             # 연봉 크롤링
             try :
@@ -150,38 +152,41 @@ for i in range(36, 38):
 
             # 직원 수 크롤링
             try:
-                try:
-                    employee1 = driver.find_element('xpath','//*[@id="__next"]/div[3]/div[2]/div[2]/div[3]/div/div[2]/div[1]/div/div/div/div').get_attribute('style')
-                    employee = int(employee1[7])
-                except:
-                    pass
-                try:
-                    employee1 = driver.find_element('xpath','//*[@id="__next"]/div[3]/div[2]/div[2]/div[3]/div/div[2]/div[1]/div/div/div[1]/div').get_attribute('style')
-                    employee2 = driver.find_element('xpath',
-                                                    '//*[@id="__next"]/div[3]/div[2]/div[2]/div[3]/div/div[2]/div[1]/div/div/div[2]/div').get_attribute(
-                        'style')
-                    employee = int(employee1[7] + employee2[7])
-                except:
-                    pass
+                employee1 = driver.find_element('xpath',
+                                                '//*[@id="__next"]/div[3]/div[2]/div[2]/div[3]/div/div[2]/div[1]/div/div/div[1]/div').get_attribute(
+                    'style')
+                employee2 = driver.find_element('xpath',
+                                                '//*[@id="__next"]/div[3]/div[2]/div[2]/div[3]/div/div[2]/div[1]/div/div/div[2]/div').get_attribute(
+                    'style')
+                employee3 = driver.find_element('xpath',
+                                                '//*[@id="__next"]/div[3]/div[2]/div[2]/div[3]/div/div[2]/div[1]/div/div/div[3]/div').get_attribute(
+                    'style')
+                employee = int(employee1[7] + employee2[7] + employee3[7])
+            except:
                 try:
                     employee1 = driver.find_element('xpath',
                                                     '//*[@id="__next"]/div[3]/div[2]/div[2]/div[3]/div/div[2]/div[1]/div/div/div[1]/div').get_attribute(
                         'style')
                     employee2 = driver.find_element('xpath',
-                                                '//*[@id="__next"]/div[3]/div[2]/div[2]/div[3]/div/div[2]/div[1]/div/div/div[2]/div').get_attribute(
-                    'style')
-                    employee3 = driver.find_element('xpath','//*[@id="__next"]/div[3]/div[2]/div[2]/div[3]/div/div[2]/div[1]/div/div/div[3]/div').get_attribute('style')
-                    employee = int(employee1[7] + employee2[7] + employee3[7])
+                                                    '//*[@id="__next"]/div[3]/div[2]/div[2]/div[3]/div/div[2]/div[1]/div/div/div[2]/div').get_attribute(
+                        'style')
+                    employee = int(employee1[7] + employee2[7])
                 except:
-                    employee = '없음'
-                    pass
-            except:
-                employee = '없음'
-                pass
+                    try:
+                        employee1 = driver.find_element('xpath',
+                                                        '//*[@id="__next"]/div[3]/div[2]/div[2]/div[3]/div/div[2]/div[1]/div/div/div/div').get_attribute(
+                            'style')
+                        employee = int(employee1[7])
+                    except:
+                        employee = '없음'
+                        pass
+
             print(employee)
             driver.back()
             time.sleep(2)
-
+            driver.find_element_by_xpath('//*[@id="__next"]/div[3]').click()
+            driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+            time.sleep(0.1)
             # 회사 이미지 크롤링
             try:
                 picture_url = driver.find_element("css selector",
@@ -212,15 +217,7 @@ for i in range(36, 38):
 
     #-------------------------------------------------------------------------------------------------
             # 주소 크롤링
-            driver.execute_script("window.scrollTo(0, 2400);")
-            time.sleep(0.5)
-            try:
-                address = driver.find_element("xpath",
-                                    '//*[@id="__next"]/div[3]/div[1]/div[1]/div[1]/div[2]/section[2]/div[2]').text
-                print(address)
-            except:
-                address = '없음'
-                pass
+
 
 
 
@@ -264,6 +261,8 @@ for i in range(36, 38):
             try:
                 welfare = driver.find_element("xpath",
                                               '//*[@id="__next"]/div[3]/div[1]/div[1]/div/div[2]/section[1]/p[5]/span').text
+                welfare_ = driver.find_element("xpath",
+                                               '//*[@id="__next"]/div[3]/div[1]/div[1]/div/div[2]/section[1]/p[5]/span')
                 print(welfare)
             except:
                 welfare = '없음'
@@ -273,14 +272,35 @@ for i in range(36, 38):
             print('debug skill')
             try:
                 try:
-                    skill = driver.find_element('xpath','//*[@id="__next"]/div[3]/div[1]/div[1]/div[1]/div[2]/section[1]/p[6]/div').text
-
+                    skill = driver.find_element('xpath',
+                                                '//*[@id="__next"]/div[3]/div[1]/div[1]/div[1]/div[2]/section[1]/p[6]/div').text
                     print(skill)
 
                 except:
                     skill = '없음'
             except:
                 skill = '없음'
+                pass
+            time.sleep(0.2)
+            print('debug1')
+
+            # 주소 크롤링
+            time.sleep(1)
+            try:
+                desired_y = (welfare_.size['height'] / 2) + welfare_.location['y']
+                current_y = (driver.execute_script('return window.innerHeight') / 2) + driver.execute_script(
+                    'return window.pageYOffset')
+                scroll_y_by = desired_y - current_y
+                driver.execute_script("window.scrollBy(0, arguments[0]);", scroll_y_by)
+                # driver.execute_script('arguments[0].scrollIntoView(true);', button)
+                # driver.execute_script("window.scrollTo(0, button);")
+                time.sleep(1)
+                address = driver.find_element("xpath",
+                                              '//*[@id="__next"]/div[3]/div[1]/div[1]/div[1]/div[2]/section[2]/div[2]/span[2]').text
+                print(address)
+                time.sleep(1)
+            except:
+                address = '없음'
                 pass
             time.sleep(0.2)
             print('debug1')
@@ -305,6 +325,7 @@ for i in range(36, 38):
             time.sleep(0.2)
             driver.back()
             print('debug2')
+            print(address)
             df = pd.DataFrame({'category': [category], 'page_url': [page_url], 'picture_url': [picture_url],
                                'title': [title], 'company': [company],
                                'work': [work], 'qualification': [qualification], 'favor': [favor],
@@ -315,6 +336,8 @@ for i in range(36, 38):
             print('save', i, j)
         except:
             print('error', job_list[i], j)
+            driver.back()
+            time.sleep(0.2)
             pass
     df2 = pd.DataFrame({'category': category_list, 'page_url': page_url_list, 'picture_url': picture_url_list,
                        'title': title_list, 'company': company_list,
