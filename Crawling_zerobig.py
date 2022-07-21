@@ -3,18 +3,13 @@ from selenium.webdriver.chrome.options import Options
 import pandas as pd
 from selenium.common.exceptions import NoSuchElementException
 import time
-import os
-import requests
-from bs4 import BeautifulSoup
-import datetime
-import tqdm
 
 options = webdriver.ChromeOptions()
 # options.add_experimental_option("debuggerAddress", "127.0.0.1:9222")
 options.add_experimental_option("prefs", {"profile.default_content_setting_values.notifications": 1})
 options.add_argument('lnag=ko_KR')
 # print('debug3')
-driver = webdriver.Chrome('./chromedriver.exe', options=options)
+driver = webdriver.Chrome('./chromedriver', options=options)
 
 
 # 스크롤 내리기함수
@@ -39,12 +34,14 @@ def infinite_loop():
 driver.get(
     'https://www.wanted.co.kr/wdlist/518?country=kr&job_sort=company.response_rate_order&years=-1&locations=all')
 time.sleep(1)
-driver.find_element('xpath', '//*[@id="gnbSignupBtn"]').click()
+# driver.find_element('xpath', '//*[@id="__next"]/div[1]/div/nav/aside/ul/li[2]/button').click() # 윈도우 창 크기에 따라서 xpath 가 달라짐
+driver.find_element('xpath', '//*[@id="__next"]/div[1]/div/nav/aside/ul/li[2]/button').click()
 time.sleep(1)
 driver.find_element('xpath', '//*[@id="MODAL_BODY"]/div[2]/div[2]/div[3]/div[1]/button').click()
 time.sleep(1)
 driver.find_element('name', 'email').send_keys('realove-u@nate.com')
 driver.find_element('name', 'password').send_keys('speed')
+time.sleep(5)
 driver.find_element('xpath', '//*[@id="login-form"]/fieldset/div[8]/button[1]').click()
 time.sleep(2)
 #-------------------------------------------------------------
@@ -65,8 +62,8 @@ place_list = []
 money_list = []
 number_list = []
 
-for i in range(8, 38):
-
+for i in range(36, 38):
+    df2 = pd.DataFrame()
     time.sleep(1)
     url = 'https://www.wanted.co.kr/wdlist/518?country=kr&job_sort=company.response_rate_order&years=-1&locations=all'
     driver.get(url)
@@ -81,6 +78,8 @@ for i in range(8, 38):
     # 직군선택
     driver.find_element('xpath',
                         '//*[@id="__next"]/div[3]/article/div/div[2]/section/div[1]/div/button[{}]'.format(i)).click()
+    # 직군명 크롤링
+    category = driver.find_element('xpath', '//*[@id="__next"]/div[3]/article/div/div[2]/section/div[1]/div/button[{}]'.format(i)).text
     time.sleep(0.3)
 
     # 선택완료 클릭
@@ -88,8 +87,6 @@ for i in range(8, 38):
     driver.execute_script("arguments[0].click();", button3)
     time.sleep(0.9)
 
-    # 직군명 크롤링
-    category = driver.find_element('xpath','//*[@id="__next"]/div[3]/article/div/div[2]/button/span[1]').text
 
 
 
@@ -116,9 +113,10 @@ for i in range(8, 38):
                 'CIO']
     # try:
     crawling_list = ["",1951,1956,1532,1504,1304,638,585,548,533,527,515,520,433,446,344,331,304,284,281,243,182,166,144,151,124,109,116,95,80,79,55,54,38,30,29,18,10]
-    try:
-        for j in range(1, crawling_list[i]+1):  # 2 , 12
 
+    for j in range(1, crawling_list[i - 1]+1):  # 2 , 12
+        try:
+            df = pd.DataFrame() #2
             # 공고문 클릭
             button5 = driver.find_element('css selector', '#__next > div.JobList_cn__t_THp > div > div > div.List_List_container__JnQMS > ul > li:nth-child({}) > div > a > header'.format(j))
             driver.execute_script("arguments[0].click();", button5)
@@ -175,17 +173,22 @@ for i in range(8, 38):
                     employee3 = driver.find_element('xpath','//*[@id="__next"]/div[3]/div[2]/div[2]/div[3]/div/div[2]/div[1]/div/div/div[3]/div').get_attribute('style')
                     employee = int(employee1[7] + employee2[7] + employee3[7])
                 except:
+                    employee = '없음'
                     pass
             except:
+                employee = '없음'
                 pass
             print(employee)
             driver.back()
             time.sleep(2)
 
             # 회사 이미지 크롤링
-            picture_url = driver.find_element("css selector",
+            try:
+                picture_url = driver.find_element("css selector",
                                               '#__next > div.JobDetail_cn__WezJh > div.JobDetail_contentWrapper__DQDB6 > div.JobDetail_relativeWrapper__F9DT5 > div > section.JobImage_JobImage__OFUyr > div > div:nth-child(1) > img').get_attribute(
                 'src')
+            except:
+                picture_url = '없음'
             # 공고명 크롤링
             title = driver.find_element("xpath", '//*[@id="__next"]/div[3]/div[1]/div[1]/div/section[2]/h2').text
             print(title)
@@ -231,83 +234,56 @@ for i in range(8, 38):
                 Introduction = '없음'
                 pass
             # 주요 업무 text 위치
-            if tag[0] == tag_xpath[0]:
-                try:
-                    work = driver.find_element("xpath",
-                                               '//*[@id="__next"]/div[3]/div[1]/div[1]/div/div[2]/section[1]/p[2]/span').text
-                    print(work)
-                except:
-                    work = '없음'
-                    pass
+            try:
+                work = driver.find_element("xpath",
+                                           '//*[@id="__next"]/div[3]/div[1]/div[1]/div/div[2]/section[1]/p[2]/span').text
+                print(work)
+            except:
+                work = '없음'
+                pass
             # 자격 요건 text 위치
             time.sleep(0.2)
-            if tag[1] == tag_xpath[1]:
-                try:
-                    qualification = driver.find_element("xpath",
-                                                        '//*[@id="__next"]/div[3]/div[1]/div[1]/div/div[2]/section[1]/p[3]/span').text
-                    print(qualification)
-                except:
-                    qualification = '없음'
-                    pass
+            try:
+                qualification = driver.find_element("xpath",
+                                                    '//*[@id="__next"]/div[3]/div[1]/div[1]/div/div[2]/section[1]/p[3]/span').text
+                print(qualification)
+            except:
+                qualification = '없음'
+                pass
             # 우대 사항 text 위치
             time.sleep(0.2)
-            if tag[2] == tag_xpath[2]:
-                try:
-                    favor = driver.find_element("xpath",
-                                                '//*[@id="__next"]/div[3]/div[1]/div[1]/div/div[2]/section[1]/p[4]/span').text
-                    print(favor)
-                except:
-                    favor = '없음'
-                    pass
-            else:
-                favor = '없음'
+            try:
+                favor = driver.find_element("xpath",
+                                            '//*[@id="__next"]/div[3]/div[1]/div[1]/div/div[2]/section[1]/p[4]/span').text
                 print(favor)
+            except:
+                favor = '없음'
+                pass
             # 혜택 및 복지 text 위치
             time.sleep(0.2)
-            if tag[3] == tag_xpath[3]:
-                try:
-                    welfare = driver.find_element("xpath",
-                                                  '//*[@id="__next"]/div[3]/div[1]/div[1]/div/div[2]/section[1]/p[5]/span').text
-                    print(welfare)
-                except:
-                    welfare = '없음'
-                    pass
-            elif tag[3] == tag_xpath[2]:
-                try:
-                    welfare = driver.find_element("xpath",
-                                                  '//*[@id="__next"]/div[3]/div[1]/div[1]/div/div[2]/section[1]/p[4]/span').text
-                    print(welfare)
-                except:
-                    welfare = '없음'
-                    pass
-            else:
-                welfare = '없음'
-            # 기술 스택 text 위치
             try:
-                if tag[5] == tag_xpath[4]:
+                welfare = driver.find_element("xpath",
+                                              '//*[@id="__next"]/div[3]/div[1]/div[1]/div/div[2]/section[1]/p[5]/span').text
+                print(welfare)
+            except:
+                welfare = '없음'
+                pass
 
-                    try:
-                        skill = driver.find_element('xpath','//*[@id="__next"]/div[3]/div[1]/div[1]/div[1]/div[2]/section[1]/p[5]/div').text
-                        print(skill)
+            # 기술 스택 text 위치
+            print('debug skill')
+            try:
+                try:
+                    skill = driver.find_element('xpath','//*[@id="__next"]/div[3]/div[1]/div[1]/div[1]/div[2]/section[1]/p[6]/div').text
 
-                    except:
-                        skill = '없음'
+                    print(skill)
 
-                elif tag[5] == tag_xpath[5]:
-
-                    try:
-                        skill = driver.find_element('xpath','//*[@id="__next"]/div[3]/div[1]/div[1]/div[1]/div[2]/section[1]/p[6]/div').text
-
-                        print(skill)
-
-                    except:
-                        skill = '없음'
-                else:
+                except:
                     skill = '없음'
             except:
                 skill = '없음'
                 pass
             time.sleep(0.2)
+            print('debug1')
 
 
 
@@ -328,17 +304,24 @@ for i in range(8, 38):
             number_list.append(employee)
             time.sleep(0.2)
             driver.back()
-            df = pd.DataFrame({'category': category_list, 'page_url': page_url_list, 'picture_url': picture_url_list,
-                               'title': title_list, 'company': company_list,
-                               'work': work_list, 'qualification': qualification_list, 'favor': favor_list,
-                               'welfare': welfare_list, 'skill_stack': skill_stack_list,
-                               'place': place_list, 'money': money_list, 'employee': number_list})
+            print('debug2')
+            df = pd.DataFrame({'category': [category], 'page_url': [page_url], 'picture_url': [picture_url],
+                               'title': [title], 'company': [company],
+                               'work': [work], 'qualification': [qualification], 'favor': [favor],
+                               'welfare': [welfare], 'skill_stack': [skill],
+                               'place': [address], 'money': [money], 'employee': [employee]})
+            print('debug3')
             df.to_csv('./wanted/crawling_{}_{}.csv'.format(i, j), index=False)
             print('save', i, j)
-    except:
-        print('error', job_list[i], j)
-        pass
-    df.to_csv('./wanted/all/crawling_ERP전문가_{}.csv'.format(job_list[i]), index=False)
+        except:
+            print('error', job_list[i], j)
+            pass
+    df2 = pd.DataFrame({'category': category_list, 'page_url': page_url_list, 'picture_url': picture_url_list,
+                       'title': title_list, 'company': company_list,
+                       'work': work_list, 'qualification': qualification_list, 'favor': favor_list,
+                       'welfare': welfare_list, 'skill_stack': skill_stack_list,
+                       'place': place_list, 'money': money_list, 'employee': number_list})
+    df2.to_csv('./wanted/wanted_category/crawling_{}.csv'.format(job_list[i]), index=False)
     time.sleep(1)
     driver.back()
 
