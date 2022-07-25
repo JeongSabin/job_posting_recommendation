@@ -32,6 +32,9 @@ def infinite_loop():
 
 #-------------------------------------------------------------
 # 원티드 로그인
+# kakao login / 카카오로 로그인할 아이디와 비밀번호를 설정해주세요.
+ID = ''
+PW = ''
 driver.get(
     'https://www.wanted.co.kr/wdlist/518?country=kr&job_sort=company.response_rate_order&years=-1&locations=all')
 time.sleep(1)
@@ -40,8 +43,8 @@ driver.find_element('xpath', '//*[@id="__next"]/div[1]/div/nav/aside/ul/li[2]/bu
 time.sleep(1)
 driver.find_element('xpath', '//*[@id="MODAL_BODY"]/div[2]/div[2]/div[3]/div[1]/button').click()
 time.sleep(1)
-driver.find_element('name', 'email').send_keys('realove-u@nate.com')
-driver.find_element('name', 'password').send_keys('speed')
+driver.find_element('name', 'email').send_keys(f'{ID}')
+driver.find_element('name', 'password').send_keys(f'{PW}')
 time.sleep(5)
 driver.find_element('xpath', '//*[@id="login-form"]/fieldset/div[8]/button[1]').click()
 time.sleep(2)
