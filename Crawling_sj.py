@@ -1,3 +1,5 @@
+
+
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 import pandas as pd
@@ -10,7 +12,7 @@ options = webdriver.ChromeOptions()
 options.add_experimental_option("prefs", {"profile.default_content_setting_values.notifications": 1})
 options.add_argument('lnag=ko_KR')
 # print('debug3')
-driver = webdriver.Chrome('./chromedriver', options=options)
+driver = webdriver.Chrome('./chromedriver14', options=options)
 actions = ActionChains(driver)
 
 # 스크롤 내리기함수
@@ -63,7 +65,7 @@ place_list = []
 money_list = []
 number_list = []
 
-for i in range(2, 6):
+for i in range(5, 6):
     df2 = pd.DataFrame()
     time.sleep(3)
     url = 'https://www.wanted.co.kr/wdlist/518?country=kr&job_sort=company.response_rate_order&years=-1&locations=all'
@@ -96,7 +98,6 @@ for i in range(2, 6):
     while True:
         # 끝까지 스크롤 다운
         driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
-        break
         # 대기
         time.sleep(1.5)
 
@@ -115,7 +116,7 @@ for i in range(2, 6):
     # try:
     crawling_list = [1951,1956,1532,1504,1304,638,585,548,533,527,515,520,433,446,344,331,304,284,281,243,182,166,144,151,124,109,116,95,80,79,55,54,38,30,29,18,10]
 
-    for j in range(1, crawling_list[i]+1):  # 2 , 12
+    for j in range(997, 1000):  # 2 , 12
         try:
             df = pd.DataFrame() #2
             # 공고문 클릭
