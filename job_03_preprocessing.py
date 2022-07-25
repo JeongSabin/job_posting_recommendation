@@ -1,10 +1,11 @@
 import pandas as pd
 from konlpy.tag import Okt
 import re
+# import nltk
+# nltk.download("book", quiet=True)
 import nltk
-nltk.download("book", quiet=True)
-from nltk.book import *
-
+# nltk.download()
+from nltk.tokenize import word_tokenize
 
 df = pd.read_csv('./wanted/clear_data/All_clear_data.csv')
 df.info()
@@ -31,9 +32,14 @@ for work in df.work:
     #review = review.split()
     token = okt.pos(work, stem=True)
 
+    # 영어 단어 단위 토크나이징
+    sentence = work
+    token2 = word_tokenize(sentence)
+
     df_token = pd.DataFrame(token, columns=['word', 'class'])  #튜플형태 >> 컬럼 두개짜리 데이터프레임 으로 변환
     df_token = df_token[(df_token['class']=='Noun') | (df_token['class']=='Verb') | (df_token['class']=='Adjective') | (df_token['class']=='Adverb')]
     print(df_token)
+    print(token2)
     # exit()
 
     words =[]
@@ -41,8 +47,9 @@ for work in df.work:
         if 1 < len(word) < 10 :
             if word not in stopwords :
                 words.append(word)
-    cleaned_sentence = ' '.join(words)
+    cleaned_sentence = ' '.join(words + token2)
     first_cleaned_works.append(cleaned_sentence)
+    # first_cleaned_works.append(token2)
 
 for welfare in df.welfare:
     # count += 1
@@ -55,6 +62,10 @@ for welfare in df.welfare:
     #review = review.split()
     token = okt.pos(welfare, stem=True)
 
+    # 영어 단어 단위 토크나이징
+    sentence = work
+    token2 = word_tokenize(sentence)
+
     df_token = pd.DataFrame(token, columns=['word', 'class'])  #튜플형태 >> 컬럼 두개짜리 데이터프레임 으로 변환
     df_token = df_token[(df_token['class']=='Noun') | (df_token['class']=='Verb') | (df_token['class']=='Adjective') | (df_token['class']=='Adverb')]
     print(df_token)
@@ -65,13 +76,15 @@ for welfare in df.welfare:
         if 1 < len(word) < 10 :
             if word not in stopwords :
                 words.append(word)
-    cleaned_sentence = ' '.join(words)
+    cleaned_sentence = ' '.join(words + token2)
     first_cleaned_welfare.append(cleaned_sentence)
-
-df['first_cleaned_works'] = first_cleaned_works
-df['first_cleaned_welfares'] = first_cleaned_welfare
+first_cleaned_all = []
+for i in range(len(first_cleaned_welfare)):
+    first_cleaned_all.append(first_cleaned_welfare[i] + first_cleaned_works[i])
+df['first_cleaned_all'] = first_cleaned_all
+# df['first_cleaned_welfares'] = first_cleaned_welfare
 df.dropna(inplace=True)
 
-df.to_csv('./wanted/wanted_data/wanted_data_preprocessing_01.csv', index=False)
+df.to_csv('./wanted/clear_data/wanted_data_preprocessing_all.csv', index=False)
 print(df)
 df.info()
