@@ -47,7 +47,11 @@ for work in df.work:
         if 1 < len(word) < 10 :
             if word not in stopwords :
                 words.append(word)
-    cleaned_sentence = ' '.join(words + token2)
+    for english in token2:
+        if 1 < len(english) < 10:
+            if english not in stopwords:
+                words.append(english)
+    cleaned_sentence = ' '.join(words)
     first_cleaned_works.append(cleaned_sentence)
     # first_cleaned_works.append(token2)
 
@@ -76,7 +80,11 @@ for welfare in df.welfare:
         if 1 < len(word) < 10 :
             if word not in stopwords :
                 words.append(word)
-    cleaned_sentence = ' '.join(words + token2)
+    for english in token2:
+        if 1 < len(english) < 10:
+            if english not in stopwords:
+                words.append(english)
+    cleaned_sentence = ' '.join(words)
     first_cleaned_welfare.append(cleaned_sentence)
 first_cleaned_all = []
 for i in range(len(first_cleaned_welfare)):
