@@ -38,12 +38,14 @@ for path in data_paths:
         # if count % 100 == 0 :
         #     print()
 
-        work = re.sub('[^가-힣a-zA-Z ]', ' ', work)
-        #review = review.split()
-        token = okt.pos(work, stem=True)
+        work1 = re.sub('[^가-힣 ]', ' ', work)
+        work2 = re.sub('[^a-zA-Z ]', ' ', work)
+
+        # review = review.split()
+        token = okt.pos(work1, stem=True)
 
         # 영어 단어 단위 토크나이징
-        sentence = work
+        sentence = work2
         token2 = word_tokenize(sentence)
 
         df_token = pd.DataFrame(token, columns=['word', 'class'])  #튜플형태 >> 컬럼 두개짜리 데이터프레임 으로 변환
@@ -71,12 +73,13 @@ for path in data_paths:
         # if count % 100 == 0 :
         #     print()
 
-        review = re.sub('[^가-힣a-zA-Z ]', ' ', welfare)
-        #review = review.split()
-        token = okt.pos(welfare, stem=True)
+        welfare1 = re.sub('[^가-힣 ]', ' ', welfare)
+        welfare2 = re.sub('[^a-zA-Z ]', ' ', welfare)
+        # review = review.split()
+        token = okt.pos(welfare1, stem=True)
 
         # 영어 단어 단위 토크나이징
-        sentence = work
+        sentence = welfare2
         token2 = word_tokenize(sentence)
 
         df_token = pd.DataFrame(token, columns=['word', 'class'])  #튜플형태 >> 컬럼 두개짜리 데이터프레임 으로 변환
