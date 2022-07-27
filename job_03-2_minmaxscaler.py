@@ -24,5 +24,5 @@ for path in data_paths:
     scaler_money = minmaxscaler.fit_transform(df_money)
     print(scaler_money)
     df['scaler_money'] = scaler_money
-    df.to_csv(f'./wanted/clear_data/{cnt}_{job_list[cnt]}_data_scaler.csv', index=False)
+    df.to_csv(f'./wanted/clear_data/{str(cnt).zfill(2)}_{job_list[cnt]}_data_scaler.csv', index=False)
     cnt += 1

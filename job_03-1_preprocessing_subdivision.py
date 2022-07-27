@@ -16,7 +16,7 @@ job_list = ['웹', '서버', '프론트엔드', '소프트웨어', '자바', '�
                 '하드웨어엔지니어', '크로스플랫폼', 'DBA', 'NET개발자', '영상음성엔지니어', '그래픽스엔지니어', 'CTO', 'VR엔지니어', 'BI엔지니어', 'ERP전문가', '루비온레일즈개발자',
                 'CIO']
 cnt = 0
-for path in data_paths:
+for path in data_paths[:10]:
     print(path)
     df = pd.read_csv(path)
     df.info()
@@ -116,8 +116,7 @@ for path in data_paths:
     df['first_cleaned_works'] = first_cleaned_works
     # df['first_cleaned_welfares'] = first_cleaned_welfare
     df.dropna(inplace=True)
-
-    df.to_csv(f'./wanted/preprocessing_data/{cnt}_{job_list[cnt]}_preprocessing_01.csv', index=False)
+    df.to_csv(f'./wanted/preprocessing_data/{str(cnt).zfill(2)}_{job_list[cnt]}_preprocessing_01.csv', index=False)
     print(df)
     df.info()
     cnt += 1
