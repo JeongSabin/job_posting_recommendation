@@ -28,7 +28,8 @@ with open('./wanted/TFIDF_model_welfare/13_머신러닝엔지니어_Tfidf_wanted
 
 # 게임 제목 / index를 이용
 job_idx = df_reviews[df_reviews['page_url']=='https://www.wanted.co.kr/wd/111367'].index[0] # gameidx = 1003
-
+print(job_idx)
+exit()
 cosine_sim1 = linear_kernel(Tfidf_matrix1[job_idx], Tfidf_matrix1)
 cosine_sim2 = linear_kernel(Tfidf_matrix2[job_idx], Tfidf_matrix2)
 print(type(cosine_sim1))

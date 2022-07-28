@@ -12,7 +12,7 @@ import glob
 def getRecommendation(cosin_sim):
     simScore = list(enumerate(cosin_sim[-1]))
     simScore = sorted(simScore, key=lambda x:x[1], reverse=True)
-    simScore = simScore[:11]
+    simScore = simScore[:16]
     movieIdx = [i[0] for i in simScore]
     recMovieList = df.iloc[movieIdx, 2]
     return recMovieList
@@ -45,9 +45,9 @@ for path in user_data:
     data_ = df[df['page_url']==path]
     print(data_)
     df_mark = pd.concat([df_mark, data_], ignore_index=True)
-df.drop_duplicates(inplace=True)
+df_mark.drop_duplicates(inplace=True)
 print(df)
-print(df_mark['page_url'])
+print(df_mark['first_cleaned_welfare'])
 
 Tfidf_welfare = TfidfVectorizer(sublinear_tf=True)
 Tfidf_matrix_welfare = Tfidf_welfare.fit_transform(df['first_cleaned_welfare'])
@@ -55,18 +55,34 @@ Tfidf_matrix_welfare = Tfidf_welfare.fit_transform(df['first_cleaned_welfare'])
 Tfidf_work = TfidfVectorizer(sublinear_tf=True)
 Tfidf_matrix_work = Tfidf_work.fit_transform(df['first_cleaned_works'])
 print(Tfidf_matrix_welfare)
+print(Tfidf_matrix_work)
 
-Tfidf = TfidfVectorizer(sublinear_tf=True)
-Tfidf_matrix_mk_welfare = Tfidf.fit_transform(df['first_cleaned_welfare'])
-Tfidf_matrix_mk_work = Tfidf.fit_transform(df['first_cleaned_works'])
+print(df['first_cleaned_works'])
 
-print(Tfidf_matrix_mk_work)
-print(Tfidf_matrix_mk_welfare)
-exit()
-cosine_sim1 = linear_kernel(Tfidf_matrix_welfare[-1], Tfidf_matrix_welfare)
-cosine_sim2 = linear_kernel(Tfidf_matrix_work[-1], Tfidf_matrix_work)
+df_one = pd.DataFrame()
+texts_welfare = ''
+for title in df_mark['first_cleaned_welfare']:
+    texts_welfare += ' '
+    texts_welfare += title
+
+texts_work = ''
+for title in df_mark['first_cleaned_works']:
+    texts_work += ' '
+    texts_work += title
+print(type([texts_work]))
+df_one['first_cleaned_welfare'] = [texts_welfare]
+df_one['first_cleaned_work'] = [texts_work]
+
+# fit_transform 이 아닌 transform 을 위에서 만든 Tfidf 모델을 사용해 vector화 시키기
+welfare_vector = Tfidf_welfare.transform(df_one['first_cleaned_welfare'])
+work_vector = Tfidf_work.transform(df_one['first_cleaned_work'])
+
+
+cosine_sim1 = linear_kernel(welfare_vector, Tfidf_matrix_welfare)
+cosine_sim2 = linear_kernel(work_vector, Tfidf_matrix_work)
+
 
 cosine_sim = cosine_sim1 * 0.25 + cosine_sim2 * 0.6 + np.array(df['scaler_money'], np.float) * 0.15
 
 recommendation = getRecommendation(cosine_sim)
-print(recommendation[1:11])
+print(recommendation[6:16])

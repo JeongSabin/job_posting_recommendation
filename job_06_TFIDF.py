@@ -40,6 +40,8 @@ for path in data_paths:
     df_reviews.info()
     Tfidf = TfidfVectorizer(sublinear_tf=True)
     Tfidf_matrix = Tfidf.fit_transform(df_reviews['first_cleaned_works'])
+    print(df_reviews['first_cleaned_works'])
+    exit()
     print(Tfidf_matrix.shape)
     # (3182, 84461)
     print(Tfidf_matrix[0].shape)
