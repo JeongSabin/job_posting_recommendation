@@ -11,8 +11,9 @@ from PIL import Image
 rc('font', family='AppleGothic')
 plt.rcParams['axes.unicode_minus'] = False
 
-df = pd.read_csv('./wanted/clear_data/wanted_data_preprocessing_all.csv')
-words = df[df['page_url']=='https://www.wanted.co.kr/wd/116951']['first_cleaned_all']
+df = pd.read_csv('./wanted/preprocessing_data/13_머신러닝엔지니어_preprocessing_01.csv')
+words = df[df['page_url']=='https://www.wanted.co.kr/wd/111367']['first_cleaned_welfare']
+# words = df[df['page_url']=='https://www.wanted.co.kr/wd/111367']['first_cleaned_works']
 print(words.iloc[0])
 words = words.iloc[0].split()
 print(words)

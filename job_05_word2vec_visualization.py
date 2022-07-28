@@ -13,7 +13,7 @@ rc('font', family='AppleGothic')
 plt.rcParams['axes.unicode_minus'] = False
 
 embedding_model = Word2Vec.load('./wanted/model/post_rec_model.model')
-key_word = '웹'
+key_word = '유연'
 sim_word = embedding_model.wv.most_similar(key_word, topn=10)
 print(sim_word)
 
