@@ -10,7 +10,7 @@ options = webdriver.ChromeOptions()
 options.add_experimental_option("prefs", {"profile.default_content_setting_values.notifications": 1})
 options.add_argument('lnag=ko_KR')
 # print('debug3')
-driver = webdriver.Chrome('./chromedriver', options=options)
+driver = webdriver.Chrome('chromedriver', options=options)
 actions = ActionChains(driver)
 
 # 스크롤 내리기함수
@@ -332,7 +332,7 @@ for i in range(2, 6):
                                'welfare': [welfare], 'skill_stack': [skill],
                                'place': [address], 'money': [money], 'employee': [employee]})
             print('debug3')
-            df.to_csv('./wanted/crawling_{}_{}.csv'.format(i, j), index=False)
+            df.to_csv('./rec_sys_model/wanted/crawling_{}_{}.csv'.format(i, j), index=False)
             print('save', i, j)
         except:
             print('error', job_list[i], j)
@@ -344,7 +344,7 @@ for i in range(2, 6):
                        'work': work_list, 'qualification': qualification_list, 'favor': favor_list,
                        'welfare': welfare_list, 'skill_stack': skill_stack_list,
                        'place': place_list, 'money': money_list, 'employee': number_list})
-    df2.to_csv('./wanted/wanted_category/crawling_{}.csv'.format(job_list[i]), index=False)
+    df2.to_csv('./rec_sys_model/wanted/wanted_category/crawling_{}.csv'.format(job_list[i]), index=False)
     time.sleep(1)
     driver.back()
 

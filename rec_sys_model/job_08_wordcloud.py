@@ -11,7 +11,7 @@ from PIL import Image
 rc('font', family='AppleGothic')
 plt.rcParams['axes.unicode_minus'] = False
 
-df = pd.read_csv('./wanted/preprocessing_data/13_머신러닝엔지니어_preprocessing_01.csv')
+df = pd.read_csv('./rec_sys_model/wanted/preprocessing_data/13_머신러닝엔지니어_preprocessing_01.csv')
 words = df[df['page_url']=='https://www.wanted.co.kr/wd/111367']['first_cleaned_welfare']
 # words = df[df['page_url']=='https://www.wanted.co.kr/wd/111367']['first_cleaned_works']
 print(words.iloc[0])

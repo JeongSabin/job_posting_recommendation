@@ -17,11 +17,11 @@ def getRecommendation(cosin_sim):
     recMovieList = df.iloc[movieIdx, 2]
     return recMovieList
             # 머신러닝엔지니어[https://www.wanted.co.kr/wd/53925]
-df_reviews = pd.read_csv('./wanted/clear_data/13_머신러닝엔지니어_data_scaler.csv')
+df_reviews = pd.read_csv('./rec_sys_model/wanted/clear_data/13_머신러닝엔지니어_data_scaler.csv')
 user_data = ['https://www.wanted.co.kr/wd/75640', 'https://www.wanted.co.kr/wd/114692', 'https://www.wanted.co.kr/wd/56091', 'https://www.wanted.co.kr/wd/109068', 'https://www.wanted.co.kr/wd/111447']
-df_머신러닝엔지니어 = pd.read_csv('./wanted/clear_data/13_머신러닝엔지니어_data_scaler.csv')
-df_데이터사이언티스트 = pd.read_csv('./wanted/clear_data/14_데이터사이언티스트_data_scaler.csv')
-df_빅데이터엔지니어 = pd.read_csv('./wanted/clear_data/15_빅데이터엔지니어_data_scaler.csv')
+df_머신러닝엔지니어 = pd.read_csv('./rec_sys_model/wanted/clear_data/13_머신러닝엔지니어_data_scaler.csv')
+df_데이터사이언티스트 = pd.read_csv('./rec_sys_model/wanted/clear_data/14_데이터사이언티스트_data_scaler.csv')
+df_빅데이터엔지니어 = pd.read_csv('./rec_sys_model/wanted/clear_data/15_빅데이터엔지니어_data_scaler.csv')
 
 
 df_머신러닝엔지니어.dropna(inplace=True)

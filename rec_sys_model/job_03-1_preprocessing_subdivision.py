@@ -9,7 +9,7 @@ from nltk.tokenize import word_tokenize
 import glob
 
 df = pd.DataFrame()
-data_paths = glob.glob('./wanted/clear/*')
+data_paths = glob.glob('./rec_sys_model/wanted/clear/*')
 data_paths = sorted(data_paths)
 job_list = ['웹', '서버', '프론트엔드', '소프트웨어', '자바', '안드로이드', 'iOS', 'Nodejs', 'C++', '데이터엔지니어', '파이썬', 'DevOps', '시스템관리자', '머신러닝엔지니어',
                 '데이터사이언티스트', '빅데이터엔지니어', 'QA', '기술지원', '개발매니저', '보안엔지니어', '프로덕트매니저', '블록체인엔지니어', 'PHP개발자', '임베디드개발자', '웹퍼블리셔',
@@ -22,7 +22,7 @@ for path in data_paths[:10]:
     df.info()
 
     okt = Okt()
-    df_stopwords = pd.read_csv('./stopwords.csv')
+    df_stopwords = pd.read_csv('stopwords.csv')
     stopwords = list(df_stopwords['stopword'])
     stopwords = stopwords + ['지원', '운영', '직책', '근무', '가다', '조직', '제도', '입사', '제공', '개발', '서비스', '출퇴근', '그룹',
                              '단체', '해요', '업무에요', '경우', '직원', '통해', '업무', '구성원', '활용', '프로그램', '진행', '인재', '수행',
@@ -116,7 +116,7 @@ for path in data_paths[:10]:
     df['first_cleaned_works'] = first_cleaned_works
     # df['first_cleaned_welfares'] = first_cleaned_welfare
     df.dropna(inplace=True)
-    df.to_csv(f'./wanted/preprocessing_data/{str(cnt).zfill(2)}_{job_list[cnt]}_preprocessing_01.csv', index=False)
+    df.to_csv(f'./rec_sys_model/wanted/preprocessing_data/{str(cnt).zfill(2)}_{job_list[cnt]}_preprocessing_01.csv', index=False)
     print(df)
     df.info()
     cnt += 1

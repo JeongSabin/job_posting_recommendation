@@ -7,12 +7,12 @@ import nltk
 # nltk.download()
 from nltk.tokenize import word_tokenize
 
-df = pd.read_csv('./wanted/clear_data/All_clear_data.csv')
+df = pd.read_csv('./rec_sys_model/wanted/clear_data/All_clear_data.csv')
 df.info()
 
 
 okt = Okt()
-df_stopwords = pd.read_csv('./stopwords.csv')
+df_stopwords = pd.read_csv('stopwords.csv')
 stopwords = list(df_stopwords['stopword'])
 stopwords = stopwords + ['지원', '운영', '직책', '근무', '가다', '조직', '제도', '입사', '제공', '개발', '서비스', '출퇴근', '그룹',
                              '단체', '해요', '업무에요', '경우', '직원', '통해', '업무', '구성원', '활용', '프로그램', '진행', '인재', '수행',
@@ -108,6 +108,6 @@ df['first_cleaned_all'] = first_cleaned_all
 # df['first_cleaned_welfares'] = first_cleaned_welfare
 df.dropna(inplace=True)
 
-df.to_csv('./wanted/clear_data/wanted_data_preprocessing_all.csv', index=False)
+df.to_csv('./rec_sys_model/wanted/clear_data/wanted_data_preprocessing_all.csv', index=False)
 print(df)
 df.info()
