@@ -1,0 +1,1 @@
+default_appconfig = 'app.broker.MyAppConfig'
