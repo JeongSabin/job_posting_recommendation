@@ -7,7 +7,7 @@ from theme.views import *
 app_name = 'theme'
 
 urlpatterns = [
-    path('', index2, name='index2'),
+    path('', index, name='index'),
     path('about-us.html', about_us, name='about_us'),
     path('blog-grid-sidebar.html', blog_grid_sidebar, name='blog_grid_sidebar'),
     path('blog-single.html', blog_single, name='blog_single'),
