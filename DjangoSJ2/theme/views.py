@@ -1,4 +1,6 @@
 from django.shortcuts import render
+from .models import *
+from django.core.paginator import Paginator
 
 # Create your views here.
 
@@ -18,7 +20,12 @@ def bookmarked_items(request):
     return render(request, 'bookmarked-items.html')
 
 def category(request):
-    return render(request, 'category.html')
+    all_develop_manager_data = develop_manager_data.objects.all().order_by("page_url")  # 모든 데이터 조회, 내림차순(-표시) 조회
+    paginator = Paginator(all_develop_manager_data, 12)
+    page = int(request.GET.get('page', 1))
+    develop_manager_data_list = paginator.get_page(page)
+    return render(request, 'category.html', {'develop_manager_data_list': develop_manager_data_list})
+
 
 def coming_soon(request):
     return render(request, 'coming-soon.html')
@@ -54,7 +61,8 @@ def invoice(request):
     return render(request, 'invoice.html')
 
 def item_details(request):
-    return render(request, 'item-details.html')
+    develop_manager_data_list = develop_manager_data.objects.all()
+    return render(request, 'item-details.html', {'develop_manager_data_list': develop_manager_data_list})
 
 def item_listing_grid(request):
     return render(request, 'item-listing-grid.html')
