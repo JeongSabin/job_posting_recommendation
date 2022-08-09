@@ -21,7 +21,7 @@ def bookmarked_items(request):
 
 def category(request):
     all_develop_manager_data = develop_manager_data.objects.all().order_by("page_url")  # 모든 데이터 조회, 내림차순(-표시) 조회
-    paginator = Paginator(all_develop_manager_data, 12)
+    paginator = Paginator(all_develop_manager_data, 1700)
     page = int(request.GET.get('page', 1))
     develop_manager_data_list = paginator.get_page(page)
     return render(request, 'category.html', {'develop_manager_data_list': develop_manager_data_list})

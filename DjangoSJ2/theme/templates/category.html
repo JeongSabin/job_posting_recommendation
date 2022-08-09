@@ -162,10 +162,10 @@
                                     <div class="tab-pane fade show active" id="nav-grid" role="tabpanel"
                                         aria-labelledby="nav-grid-tab">
                                         <div class="row">
-                                            <div class="col-lg-4 col-md-6 col-12">
 
                                                 {% if develop_manager_data_list %}
                                                     {% for data in develop_manager_data_list %}
+                                                        <div class="col-lg-4 col-md-6 col-12">
                                                         <div class="single-item-grid">
                                                         <div class="image">
                                                             <a href="item-details.html"><img src={{ data.picture_url }} alt="#"></a>
@@ -187,15 +187,15 @@
                                                             </ul>
                                                         </div>
                                                     </div>
+                                                    </div>
                                                     {% endfor %}
                                                 {% else %}
                                                     <tr>
                                                         <td>작성된 게시글이 없습니다.</td>
                                                     </tr>
                                                 {% endif %}
-
                                                 <!-- End Single Item -->
-                                            </div>
+
                                         </div>
                                         <div class="row">
                                             <div class="col-12">
