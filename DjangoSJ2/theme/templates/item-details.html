@@ -62,12 +62,21 @@
                         <div class="product-info">
                             <h2 class="title">{{ Post.title }}</h2>
                             <p class="location"><i class="lni lni-map-marker"></i><a href="javascript:void(0)">Seoul, Korea</a></p>
-                            <h3 class="price">{{ Post.money }}만원</h3>
+                            <h3 class="price">{% if Post.money %}
+                                                    {{ Post.money }} 만원
+                                                {% else %}
+                                                    연봉정보 없음
+                                                {% endif %}</h3>
                             <div class="list-info">
                                 <h4>Informations</h4>
                                 <ul>
                                     <li><span>회사명:</span> {{ Post.company }}</li>
-                                    <li><span>평균연봉:</span>{{ Post.money }}</li>
+                                    <li><span>평균연봉:</span>{% if Post.money %}
+                                                                {{ Post.money }} 만원
+                                                            {% else %}
+                                                                연봉정보 없음
+                                                            {% endif %}
+                                    </li>
                                     <li><span>직원수:</span> {{ Post.employee }}</li>
                                 </ul>
                             </div>
@@ -107,16 +116,14 @@
                         <!-- Start Single Block -->
                         <div class="single-block description">
                             <h3>주요업무</h3>
-                            <pre>
-                                {{ develop_manager_data_list.0.work }}
-                            </pre>
+                            <pre>{{ Post.work }}</pre>
                             <ul>
                                 <h3>자격요건</h3>
-                                <pre>{{ develop_manager_data_list.0.qualification }}</pre>
+                                <pre>{{ Post.qualification }}</pre>
                                 <h3>우대사항</h3>
-                                <pre>{{ develop_manager_data_list.0.favor }}</pre>
+                                <pre>{{ Post.favor }}</pre>
                                 <h3>혜택 및 복지</h3>
-                                <pre>{{ develop_manager_data_list.0.welfare }}</pre>
+                                <pre>{{ Post.welfare }}</pre>
                             </ul>
                             <p>The generated Lorem Ipsum is therefore always free from repetition, injected humour, or
                                 non-characteristic words etc.</p>

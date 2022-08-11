@@ -180,7 +180,11 @@
                                                             <p class="location"><a href="javascript:void(0)"><i class="lni lni-map-marker">
                                                                     </i>adress</a></p>
                                                             <ul class="info">
-                                                                <li class="price">$890.00</li>
+                                                                <li class="price">{% if data.money %}
+                                                                                        {{ data.money }} 만원
+                                                                                    {% else %}
+                                                                                        연봉정보 없음
+                                                                                    {% endif %}</li>
                                                                 <li class="like"><a href="javascript:void(0)"><i
                                                                             class="lni lni-heart"></i></a>
                                                                 </li>
