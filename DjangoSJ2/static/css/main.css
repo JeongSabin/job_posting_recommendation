@@ -1900,7 +1900,7 @@ ol {
     visibility: visible;
   }
   .navbar-nav .nav-item .sub-menu > li.active {
-    background: #f9f9f9 !important;
+    background: #fff !important;
     color: #2c5bf0 !important;
   }
   .header.style3.navbar-area .header-social {
@@ -2185,7 +2185,7 @@ ol {
   font-weight: 500;
   font-size: 15px;
   color: #2c5bf0;
-  background-color: #f9f9f9;
+  background-color: #fff;
   padding: 5px 20px;
   border-radius: 4px;
 }
@@ -2369,7 +2369,7 @@ ol {
 	Pricing Table CSS
 ===============================*/
 .pricing-table {
-  background: #f9f9f9;
+  background: #fff;
   position: relative;
 }
 
@@ -2691,7 +2691,7 @@ ol {
 }
 
 .blog-list {
-  background: #f9f9f9;
+  background: #fff;
 }
 
 .blog-list .single-news {
@@ -2704,7 +2704,7 @@ ol {
 
 /* News Details */
 .blog-single {
-  background: #f9f9f9;
+  background: #fff;
 }
 
 .blog-single .post-thumbnils {
@@ -3567,7 +3567,7 @@ blockquote .shape {
 }
 
 .categories .single-cat:hover {
-  background-color: #f9f9f9;
+  background-color: #fff;
 }
 
 .categories .single-cat .icon img {
@@ -3594,7 +3594,7 @@ blockquote .shape {
   padding: 5px 10px;
   font-weight: 500;
   text-align: center;
-  background: #f9f9f9;
+  background: #fff;
   border: 1px solid #eee;
   border-radius: 5px;
   color: #081828;
@@ -3667,7 +3667,7 @@ blockquote .shape {
 
 /* Category Page*/
 .category-page {
-  background-color: #f9f9f9;
+  background-color: #fff;
 }
 
 .category-page .single-ad-grid {
@@ -3919,7 +3919,7 @@ blockquote .shape {
     Items Grid CSS
 ========================================*/
 .items-grid {
-  background: #f9f9f9;
+  background: #fff;
 }
 
 .items-grid.custom-padding {
@@ -4195,7 +4195,7 @@ blockquote .shape {
     Browse Cities CSS
 ========================================*/
 .browse-cities {
-  background-color: #f9f9f9;
+  background-color: #fff;
 }
 
 .browse-cities .section-title {
@@ -4655,7 +4655,7 @@ blockquote .shape {
     Dashbord CSS
 ========================================*/
 .dashboard {
-  background: #f9f9f9;
+  background: #fff;
 }
 
 .dashboard .main-content .details-lists .single-list {
@@ -4750,7 +4750,7 @@ blockquote .shape {
 }
 
 .dashboard .main-content .activity-log ul li:hover {
-  background: #f9f9f9;
+  background: #fff;
 }
 
 .dashboard .main-content .activity-log ul li .log-icon {
@@ -4846,7 +4846,7 @@ blockquote .shape {
 }
 
 .dashboard .main-content .recent-items ul li:hover {
-  background: #f9f9f9;
+  background: #fff;
 }
 
 .dashboard .main-content .recent-items ul li .title {
@@ -5587,7 +5587,7 @@ blockquote .shape {
 }
 
 .messages-body .user-list ul li a:hover {
-  background: #f9f9f9;
+  background: #fff;
 }
 
 .messages-body .user-list ul li a .image {
@@ -5694,7 +5694,7 @@ blockquote .shape {
 }
 
 .messages-body .chat-list .single-chat-head li.left .text {
-  background: #f9f9f9;
+  background: #fff;
   padding: 30px;
   font-size: 16px;
   line-height: 25px;
@@ -5710,7 +5710,7 @@ blockquote .shape {
   left: -16px;
   bottom: 16px;
   content: "";
-  border: 8px solid #f9f9f9;
+  border: 8px solid #fff;
   border-left-color: transparent;
   border-top-color: transparent;
   border-bottom-color: transparent;
@@ -5739,7 +5739,7 @@ blockquote .shape {
 }
 
 .messages-body .chat-list .single-chat-head li.right .text {
-  background: #f9f9f9;
+  background: #fff;
   padding: 30px;
   font-size: 16px;
   line-height: 25px;
@@ -5755,7 +5755,7 @@ blockquote .shape {
   right: -16px;
   bottom: 16px;
   content: "";
-  border: 8px solid #f9f9f9;
+  border: 8px solid #fff;
   border-right-color: transparent;
   border-top-color: transparent;
   border-bottom-color: transparent;
@@ -5944,7 +5944,7 @@ blockquote .shape {
     Login CSS
 ========================================*/
 .login {
-  background-color: #f9f9f9;
+  background-color: #fff;
 }
 
 .login .form-head {
@@ -6152,7 +6152,7 @@ blockquote .shape {
   position: relative;
   margin-top: 30px;
   padding: 40px;
-  background-color: #f9f9f9;
+  background-color: #fff;
   text-align: center;
   border: 1px solid #eee;
   border-radius: 6px;
@@ -6196,7 +6196,7 @@ blockquote .shape {
     Item Details CSS
 ========================================*/
 .item-details {
-  background-color: #f9f9f9;
+  background-color: #fff;
 }
 
 .item-details .top-area {
@@ -6644,7 +6644,7 @@ blockquote .shape {
 
 /* How It Works */
 .how-works {
-  background-color: #f9f9f9;
+  background-color: #fff;
 }
 
 .how-works .single-work {
@@ -6740,7 +6740,7 @@ blockquote .shape {
     Bookmarked CSS
 ========================================*/
 .bookmarked {
-  background-color: #f9f9f9;
+  background-color: #fff;
 }
 
 .bookmarked .job-items {
@@ -7920,7 +7920,7 @@ blockquote .shape {
 ========================================*/
 .contact-us {
   position: relative;
-  background-color: #f9f9f9;
+  background-color: #fff;
 }
 
 .contact-us .contact-head {
@@ -8034,7 +8034,7 @@ blockquote .shape {
   text-align: center;
   display: block;
   line-height: 40px;
-  background: #f9f9f9;
+  background: #fff;
   border: 1px solid #eee;
   border-radius: 50%;
   position: relative;
@@ -8115,7 +8115,7 @@ blockquote .shape {
 }
 
 .map-section {
-  background-color: #f9f9f9;
+  background-color: #fff;
 }
 
 /*======================================
@@ -8221,7 +8221,7 @@ blockquote .shape {
   margin-left: auto;
   margin-right: auto;
   position: relative;
-  background: #f9f9f9;
+  background: #fff;
   z-index: 2;
 }
 
