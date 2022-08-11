@@ -170,7 +170,7 @@
                                                         <div class="image">
                                                             <a href="item-details/{{ data.pk }}"><img src={{ data.picture_url }} alt="#"></a>
                                                             <i class=" cross-badge lni lni-bolt"></i>
-                                                            <span class="flat-badge sale">Sale</span>
+                                                            <span class="flat-badge sale">구인 중</span>
                                                         </div>
                                                         <div class="content">
                                                             <a href="javascript:void(0)" class="tag">{{ data.category }}</a>
@@ -178,7 +178,7 @@
                                                                 <a href="item-details/{{ data.pk }}">{{ data.title }}</a>
                                                             </h3>
                                                             <p class="location"><a href="javascript:void(0)"><i class="lni lni-map-marker">
-                                                                    </i>adress</a></p>
+                                                                    </i>{{ data.company }}</a></p>
                                                             <ul class="info">
                                                                 <li class="price">{% if data.money %}
                                                                                         {{ data.money }} 만원
@@ -206,14 +206,31 @@
                                                 <!-- Pagination -->
                                                 <div class="pagination left">
                                                     <ul class="pagination-list">
-                                                        <li><a href="javascript:void(0)">1</a></li>
-                                                        <li class="active"><a href="javascript:void(0)">2</a></li>
-                                                        <li><a href="javascript:void(0)">3</a></li>
-                                                        <li><a href="javascript:void(0)">4</a></li>
-                                                        <li><a href="javascript:void(0)"><i class="lni lni-chevron-right"></i></a></li>
+                                                    {% if posts.has_previous %}
+                                                    <li><a href="?page={{posts.next_page_number}}"><i class="lni lni-chevron-left"></i></a></li>
+                                                    {% endif %}
+
+                                                    {% for p in posts.paginator.page_range %}
+                                                    {% if p >= posts.number|add:-5 and p <= posts.number|add:5 %}
+                                                        {% if p == posts.number %}
+                                                        <li class="page-item active">
+                                                            <span class="page-link">{{ p }}</span>
+                                                        </li>
+                                                        {% else %}
+                                                        <li class="page-item">
+                                                            <a class="page-link" href="?page={{ p }}">{{ p }}</a>
+                                                        </li>
+                                                        {% endif %}
+                                                    {% endif %}
+                                                    {% endfor %}
+
+                                                    {% if posts.has_next %}
+                                                    <li><a href="?page={{posts.next_page_number}}"><i class="lni lni-chevron-right"></i></a></li>
+                                                    {% endif %}
                                                     </ul>
                                                 </div>
-                                                <!--/ End Pagination -->
+                                            </div>
+                                            <!-- End Pagination -->
                                             </div>
                                         </div>
                                     </div>
