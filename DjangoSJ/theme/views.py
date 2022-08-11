@@ -1,5 +1,5 @@
 from django.shortcuts import render
-
+from .models import *
 # Create your views here.
 
 def main(request):
@@ -12,7 +12,8 @@ def contact(request):
     return render(request, 'contact.html')
 
 def portfolio(request):
-    return render(request, 'portfolio.html')
+    postlist = develop_manager_data.objects.all()
+    return render(request, 'portfolio.html', {'postlist':postlist})
 
 def portfolio_details(request):
     return render(request, 'portfolio-details.html')

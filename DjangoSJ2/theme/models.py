@@ -2,7 +2,8 @@ from django.db import models
 from django.utils.translation import gettext as _
 # Create your models here.
 
-class develop_manager_data(models.Model):
+class post(models.Model):
+    id = models.IntegerField(primary_key=True)
     category = models.CharField(max_length=2000)
     page_url = models.CharField(max_length=2000)
     picture_url = models.CharField(max_length=2000)
@@ -21,3 +22,7 @@ class develop_manager_data(models.Model):
     scaler_money = models.CharField(max_length=2000)
     def __str__(self):
         return self.title
+# class like_posts(models.Model):
+#     id = models.IntegerField(primary_key=True)
+#     post = models.ForeignKey(post, on_delete=models.CASCADE)
+#     like = models.ManyToManyField(post, 'likes', blank=True)

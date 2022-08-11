@@ -16,12 +16,12 @@ def blog_single(request):
 def blog_single_sidebar(request):
     return render(request, 'blog-single-sidebar.html')
 
-def bookmarked_items(request):
+def bookmarked_items(request, post_id):
     return render(request, 'bookmarked-items.html')
 
 def category(request):
-    all_develop_manager_data = develop_manager_data.objects.all().order_by("page_url")  # 모든 데이터 조회, 내림차순(-표시) 조회
-    paginator = Paginator(all_develop_manager_data, 1700)
+    all_develop_manager_data = post.objects.all().order_by("id")  # 모든 데이터 조회, 내림차순(-표시) 조회
+    paginator = Paginator(all_develop_manager_data, len(all_develop_manager_data))
     page = int(request.GET.get('page', 1))
     develop_manager_data_list = paginator.get_page(page)
     return render(request, 'category.html', {'develop_manager_data_list': develop_manager_data_list})
@@ -60,9 +60,9 @@ def index3(request):
 def invoice(request):
     return render(request, 'invoice.html')
 
-def item_details(request):
-    develop_manager_data_list = develop_manager_data.objects.all()
-    return render(request, 'item-details.html', {'develop_manager_data_list': develop_manager_data_list})
+def item_details(request, pk):
+    Post = post.objects.get(pk=pk)
+    return render(request, 'item-details.html', {'Post':Post})
 
 def item_listing_grid(request):
     return render(request, 'item-listing-grid.html')
