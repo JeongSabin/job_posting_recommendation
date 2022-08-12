@@ -3,7 +3,7 @@
 {% include "head.html" %}
 {% include "header.html" %}
 
-
+<!--수정-->
 <body>
     <!--[if lte IE 9]>
       <p class="browserupgrade">
@@ -91,11 +91,11 @@
                         <!-- End Single Widget -->
                         <!-- Start Single Widget -->
                         <div class="single-widget range">
-                            <h3>Price Range</h3>
-                            <input type="range" class="form-range" name="range" step="1" min="100" max="10000"
+                            <h3>연봉수준</h3>
+                            <input type="range" class="form-range" name="range" step="1" min="1000" max="100000"
                                 value="10" onchange="rangePrimary.value=value">
                             <div class="range-inner">
-                                <label>$</label>
+                                <label>W</label>
                                 <input type="text" id="rangePrimary" placeholder="100" />
                             </div>
                         </div>
@@ -136,28 +136,333 @@
                 <div class="col-lg-9 col-md-8 col-12">
                     <div class="category-grid-list">
                         <div class="row">
-                            <div class="col-12">
-                                <div class="category-grid-topbar">
-                                    <div class="row align-items-center">
-                                        <div class="col-lg-6 col-md-6 col-12">
-                                            <h3 class="title">Showing 1-12 of 21 ads found</h3>
-                                        </div>
-                                        <div class="col-lg-6 col-md-6 col-12">
-                                            <nav>
-                                                <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                                                    <button class="nav-link active" id="nav-grid-tab"
-                                                        data-bs-toggle="tab" data-bs-target="#nav-grid" type="button"
-                                                        role="tab" aria-controls="nav-grid" aria-selected="true"><i
-                                                            class="lni lni-grid-alt"></i></button>
-                                                    <button class="nav-link" id="nav-list-tab" data-bs-toggle="tab"
-                                                        data-bs-target="#nav-list" type="button" role="tab"
-                                                        aria-controls="nav-list" aria-selected="false"><i
-                                                            class="lni lni-list"></i></button>
-                                                </div>
-                                            </nav>
-                                        </div>
-                                    </div>
-                                </div>
+                            <div class="col-12" style="text-align: center;">
+
+<style>
+@import url(https://fonts.googleapis.com/css?family=Raleway:200,300,400,500,600);
+@font-face {
+  font-weight: normal;
+  font-style: normal;
+  src: url("../fonts/codropsicons/codropsicons.eot");
+  src: url("../fonts/codropsicons/codropsicons.eot?#iefix") format("embedded-opentype"), url("../fonts/codropsicons/codropsicons.woff") format("woff"), url("../fonts/codropsicons/codropsicons.ttf") format("truetype"), url("../fonts/codropsicons/codropsicons.svg#codropsicons") format("svg");
+}
+*,
+*:after,
+*:before {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.cf:before,
+.cf:after {
+  content: '';
+  display: table;
+}
+.cf:after {
+  clear: both;
+}
+body {
+  background: #cfd8dc;
+  color: #37474f;
+  font-weight: 400;
+  font-family: 'LeferiPoint-WhiteObliqueA', sans-serif;
+}
+.support {
+  font-weight: bold;
+  padding: 2em 0 0 0;
+  color: #ee2563;
+  display: none;
+}
+a {
+  color: #7986cb;
+  text-decoration: none;
+  outline: none;
+}
+a:hover,
+a:focus {
+  color: #3f51b5;
+}
+.hidden {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+.container {
+  margin: 0 auto;
+  text-align: center;
+  overflow: hidden;
+}
+.content {
+  padding: 2em 1em 5em;
+  z-index: 1;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+.content h2 {
+  margin: 0 0 2em;
+}
+.content p {
+  margin: 1em 0;
+  padding: 0 0 2em;
+}
+.box {
+  padding: 4.5em 0;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-justify-content: center;
+  justify-content: center;
+}
+
+/* Box colors */
+.bg-1 {
+  background: #ECEFF1;
+  color: #37474f;
+}
+.bg-2 {
+  background: #7986cb;
+  color: #ECEFF1;
+}
+.bg-3 {
+  background: #37474f;
+  color: #fff;
+}
+
+/* Common button styles */
+.button {
+  font-family: 'Pretendard-Regular'
+  float: left;
+  min-width: 10px;
+  max-width: 400px;
+  display: block;
+  margin: 0.2em;
+  padding: 1em 2em;
+  border: none;
+  background: none;
+  color: inherit;
+  vertical-align: middle;
+  position: relative;
+  z-index: 1;
+  -webkit-backface-visibility: hidden;
+  -moz-osx-font-smoothing: grayscale;
+}
+.button:focus {
+  outline: none;
+}
+.button > span {
+  vertical-align: middle;
+}
+
+/* Text color adjustments (we could stick to the "inherit" but that does not work well in Safari) */
+.bg-1 .button {
+  color: #37474f;
+  border-color: #37474f;
+}
+.bg-2 .button {
+  color: #ECEFF1;
+  border-color: #ECEFF1;
+}
+.bg-3 .button {
+  color: #fff;
+  border-color: #fff;
+}
+
+/* Sizes */
+.button--size-s {
+  font-size: 13px;
+}
+.button--size-m {
+  font-size: 16px;
+}
+.button--size-l {
+  font-size: 18px;
+}
+
+/* Typography and Roundedness */
+.button--text-upper {
+  letter-spacing: 1px;
+  text-transform: None;
+}
+.button--text-thin {
+  font-weight: 300;
+}
+.button--text-medium {
+  font-weight: 500;
+}
+.button--text-thick {
+  font-weight: 600;
+}
+.button--round-s {
+  border-radius: 5px;
+}
+.button--round-m {
+  border-radius: 15px;
+}
+.button--round-l {
+  border-radius: 40px;
+}
+
+/* Borders */
+.button--border-thin {
+  border: 1px solid;
+}
+.button--border-medium {
+  border: 2px solid;
+}
+.button--border-thick {
+  border: 0px solid;
+}
+
+/* Individual button styles */
+
+/* Winona */
+.button--winona {
+  overflow: hidden;
+  padding: 0;
+  -webkit-transition: border-color 0.3s, background-color 0.3s;
+  transition: border-color 0.3s, background-color 0.3s;
+  -webkit-transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
+  transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
+}
+.button--winona::after {
+  content: attr(data-text);
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  color: #3f51b5;
+  -webkit-transform: translate3d(0, 25%, 0);
+  transform: translate3d(0, 25%, 0);
+}
+.button--winona > span {
+  display: block;
+}
+.button--winona.button--inverted {
+  color: #7986cb;
+}
+.button--winona.button--inverted:after {
+  color: #fff;
+}
+.button--winona::after,
+.button--winona > span {
+  padding: 5px;
+  -webkit-transition: -webkit-transform 0.3s, opacity 0.3s;
+  transition: transform 0.3s, opacity 0.3s;
+  -webkit-transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
+  transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
+}
+.button--winona:hover {
+  border-color: #0d6efd;
+  background-color: #0d6efd;
+  color : #fff;
+}
+.button--winona.button--inverted:hover {
+  border-color: #21333C;
+  background-color: #21333C;
+}
+.button--winona:hover::after {
+  opacity: 1;
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  color : #fff;
+}
+.button--winona:hover > span {
+  opacity: 0;
+  -webkit-transform: translate3d(0, -25%, 0);
+  transform: translate3d(0, -25%, 0);
+}
+
+
+</style>
+                                    <body>
+                                        <a href="http://127.0.0.1:8000/category.html">
+                                            <button class="button button--winona button--border-thick button--round-l button--text-upper button--size-s button--text-thick" data-text="전체" href="http://127.0.0.1:8000/category.html"><span>전체</span></button></a>
+                                    <a href="http://127.0.0.1:8000/category.html">
+                                            <button class="button button--winona button--border-thick button--round-l button--text-upper button--size-s button--text-thick" data-text="웹 개발자" href="http://127.0.0.1:8000/category.html"><span>웹 개발자</span></button></a>
+                                    <a href="http://127.0.0.1:8000/category.html">
+                                            <button class="button button--winona button--border-thick button--round-l button--text-upper button--size-s button--text-thick" data-text="서버 개발자" href="http://127.0.0.1:8000/category.html"><span>서버 개발자</span></button></a>
+                                    <a href="http://127.0.0.1:8000/category.html">
+                                            <button class="button button--winona button--border-thick button--round-l button--text-upper button--size-s button--text-thick" data-text="프론트엔드 개발자" href="http://127.0.0.1:8000/category.html"><span>프론트엔드 개발자</span></button></a>
+                                    <a href="http://127.0.0.1:8000/category.html">
+                                            <button class="button button--winona button--border-thick button--round-l button--text-upper button--size-s button--text-thick" data-text="소프트웨어 엔지니어" href="http://127.0.0.1:8000/category.html"><span>소프트웨어 엔지니어</span></button></a>
+                                    <a href="http://127.0.0.1:8000/category.html">
+                                            <button class="button button--winona button--border-thick button--round-l button--text-upper button--size-s button--text-thick" data-text="자바 개발자" href="http://127.0.0.1:8000/category.html"><span>자바 개발자</span></button></a>
+                                    <a href="http://127.0.0.1:8000/category.html">
+                                            <button class="button button--winona button--border-thick button--round-l button--text-upper button--size-s button--text-thick" data-text="안드로이드 개발자" href="http://127.0.0.1:8000/category.html"><span>안드로이드 개발자</span></button></a>
+                                    <a href="http://127.0.0.1:8000/category.html">
+                                            <button class="button button--winona button--border-thick button--round-l button--text-upper button--size-s button--text-thick" data-text="iOS 개발자" href="http://127.0.0.1:8000/category.html"><span>iOS 개발자</span></button></a>
+                                    <a href="http://127.0.0.1:8000/category.html">
+                                            <button class="button button--winona button--border-thick button--round-l button--text-upper button--size-s button--text-thick" data-text="데이터 엔지니어" href="http://127.0.0.1:8000/category.html"><span>데이터 엔지니어</span></button></a>
+                                    <a href="http://127.0.0.1:8000/category.html">
+                                            <button class="button button--winona button--border-thick button--round-l button--text-upper button--size-s button--text-thick" data-text="파이썬 개발자" href="http://127.0.0.1:8000/category.html"><span>파이썬 개발자</span></button></a>
+                                    <a href="http://127.0.0.1:8000/category.html">
+                                            <button class="button button--winona button--border-thick button--round-l button--text-upper button--size-s button--text-thick" data-text="Node.js 개발자" href="http://127.0.0.1:8000/category.html"><span>Node.js 개발자</span></button></a>
+                                    <a href="http://127.0.0.1:8000/category.html">
+                                            <button class="button button--winona button--border-thick button--round-l button--text-upper button--size-s button--text-thick" data-text="C,C++ 개발자" href="http://127.0.0.1:8000/category.html"><span>C,C++ 개발자</span></button></a>
+                                    <a href="http://127.0.0.1:8000/category.html">
+                                            <button class="button button--winona button--border-thick button--round-l button--text-upper button--size-s button--text-thick" data-text="DevOps" href="http://127.0.0.1:8000/category.html"><span>DevOps</span></button></a>
+                                    <a href="http://127.0.0.1:8000/category.html">
+                                            <button class="button button--winona button--border-thick button--round-l button--text-upper button--size-s button--text-thick" data-text="시스템,네트워크 관리자" href="http://127.0.0.1:8000/category.html"><span>시스템,네트워크 관리자</span></button></a>
+                                    <a href="http://127.0.0.1:8000/category.html">
+                                            <button class="button button--winona button--border-thick button--round-l button--text-upper button--size-s button--text-thick" data-text="머신러닝 엔지니어" href="http://127.0.0.1:8000/category.html"><span>머신러닝 엔지니어</span></button></a>
+                                    <a href="http://127.0.0.1:8000/category.html">
+                                            <button class="button button--winona button--border-thick button--round-l button--text-upper button--size-s button--text-thick" data-text="데이터 사이언티스트" href="http://127.0.0.1:8000/category.html"><span>데이터 사이언티스트</span></button></a>
+                                    <a href="http://127.0.0.1:8000/category.html">
+                                            <button class="button button--winona button--border-thick button--round-l button--text-upper button--size-s button--text-thick" data-text="빅데이터 엔지니어" href="http://127.0.0.1:8000/category.html"><span>빅데이터 엔지니어</span></button></a>
+                                    <a href="http://127.0.0.1:8000/category.html">
+                                            <button class="button button--winona button--border-thick button--round-l button--text-upper button--size-s button--text-thick" data-text="기술지원" href="http://127.0.0.1:8000/category.html"><span>기술지원</span></button></a>
+                                    <a href="http://127.0.0.1:8000/category.html">
+                                            <button class="button button--winona button--border-thick button--round-l button--text-upper button--size-s button--text-thick" data-text="QA" href="http://127.0.0.1:8000/category.html"><span>QA</span></button></a>
+                                    <a href="http://127.0.0.1:8000/category.html">
+                                            <button class="button button--winona button--border-thick button--round-l button--text-upper button--size-s button--text-thick" data-text="개발 매니저" href="http://127.0.0.1:8000/category.html"><span>개발 매니저</span></button></a>
+                                    <a href="http://127.0.0.1:8000/category.html">
+                                            <button class="button button--winona button--border-thick button--round-l button--text-upper button--size-s button--text-thick" data-text="보안 엔지니어" href="http://127.0.0.1:8000/category.html"><span>보안 엔지니어</span></button></a>
+                                    <a href="http://127.0.0.1:8000/category.html">
+                                            <button class="button button--winona button--border-thick button--round-l button--text-upper button--size-s button--text-thick" data-text="PM" href="http://127.0.0.1:8000/category.html"><span>PM</span></button></a>
+                                    <a href="http://127.0.0.1:8000/category.html">
+                                            <button class="button button--winona button--border-thick button--round-l button--text-upper button--size-s button--text-thick" data-text="블록체인 플랫폼 엔지니어" href="http://127.0.0.1:8000/category.html"><span>블록체인 플랫폼 엔지니어</span></button></a>
+                                    <a href="http://127.0.0.1:8000/category.html">
+                                            <button class="button button--winona button--border-thick button--round-l button--text-upper button--size-s button--text-thick" data-text="PHP 개발자" href="http://127.0.0.1:8000/category.html"><span>PHP 개발자</span></button></a>
+                                    <a href="http://127.0.0.1:8000/category.html">
+                                            <button class="button button--winona button--border-thick button--round-l button--text-upper button--size-s button--text-thick" data-text="임베디드 개발자" href="http://127.0.0.1:8000/category.html"><span>임베디드 개발자</span></button></a>
+                                    <a href="http://127.0.0.1:8000/category.html">
+                                            <button class="button button--winona button--border-thick button--round-l button--text-upper button--size-s button--text-thick" data-text="웹 퍼블리셔" href="http://127.0.0.1:8000/category.html"><span>웹 퍼블리셔</span></button></a>
+                                    <a href="http://127.0.0.1:8000/category.html">
+                                            <button class="button button--winona button--border-thick button--round-l button--text-upper button--size-s button--text-thick" data-text="하드웨어 엔지니어" href="http://127.0.0.1:8000/category.html"><span>하드웨어 엔지니어</span></button></a>
+                                    <a href="http://127.0.0.1:8000/category.html">
+                                            <button class="button button--winona button--border-thick button--round-l button--text-upper button--size-s button--text-thick" data-text="크로스플랫폼 앱 개발자" href="http://127.0.0.1:8000/category.html"><span>크로스플랫폼 앱 개발자</span></button></a>
+                                    <a href="http://127.0.0.1:8000/category.html">
+                                            <button class="button button--winona button--border-thick button--round-l button--text-upper button--size-s button--text-thick" data-text="DBA" href="http://127.0.0.1:8000/category.html"><span>DBA</span></button></a>
+                                    <a href="http://127.0.0.1:8000/category.html">
+                                            <button class="button button--winona button--border-thick button--round-l button--text-upper button--size-s button--text-thick" data-text=".NET 개발자" href="http://127.0.0.1:8000/category.html"><span>.NET 개발자</span></button></a>
+                                    <a href="http://127.0.0.1:8000/category.html">
+                                            <button class="button button--winona button--border-thick button--round-l button--text-upper button--size-s button--text-thick" data-text="영상,음성 엔지니어" href="http://127.0.0.1:8000/category.html"><span>영상,음성 엔지니어</span></button></a>
+                                    <a href="http://127.0.0.1:8000/category.html">
+                                            <button class="button button--winona button--border-thick button--round-l button--text-upper button--size-s button--text-thick" data-text="그래픽스 엔지니어" href="http://127.0.0.1:8000/category.html"><span>그래픽스 엔지니어</span></button></a>
+                                    <a href="http://127.0.0.1:8000/category.html">
+                                            <button class="button button--winona button--border-thick button--round-l button--text-upper button--size-s button--text-thick" data-text="CTO" href="http://127.0.0.1:8000/category.html"><span>CTO</span></button></a>
+                                    <a href="http://127.0.0.1:8000/category.html">
+                                            <button class="button button--winona button--border-thick button--round-l button--text-upper button--size-s button--text-thick" data-text="VR 엔지니어" href="http://127.0.0.1:8000/category.html"><span>VR 엔지니어</span></button></a>
+                                    <a href="http://127.0.0.1:8000/category.html">
+                                            <button class="button button--winona button--border-thick button--round-l button--text-upper button--size-s button--text-thick" data-text="BI 엔지니어" href="http://127.0.0.1:8000/category.html"><span>BI 엔지니어</span></button></a>
+                                    <a href="http://127.0.0.1:8000/category.html">
+                                            <button class="button button--winona button--border-thick button--round-l button--text-upper button--size-s button--text-thick" data-text="ERP전문가" href="http://127.0.0.1:8000/category.html"><span>ERP전문가</span></button></a>
+                                    <a href="http://127.0.0.1:8000/category.html">
+                                            <button class="button button--winona button--border-thick button--round-l button--text-upper button--size-s button--text-thick" data-text="루비온레일즈 개발자" href="http://127.0.0.1:8000/category.html"><span>루비온레일즈 개발자</span></button></a>
+                                    <a href="http://127.0.0.1:8000/category.html">
+                                            <button class="button button--winona button--border-thick button--round-l button--text-upper button--size-s button--text-thick" data-text="CIO" href="http://127.0.0.1:8000/category.html"><span>CIO</span></button></a>
+
+
+                                    </body>
+                            </div>
+                        </div>
+                    </div>
                                 <div class="tab-content" id="nav-tabContent">
                                     <div class="tab-pane fade show active" id="nav-grid" role="tabpanel"
                                         aria-labelledby="nav-grid-tab">
@@ -177,8 +482,8 @@
                                                             <h3 class="title">
                                                                 <a href="item-details/{{ data.pk }}">{{ data.title }}</a>
                                                             </h3>
-                                                            <p class="location"><a href="javascript:void(0)"><i class="lni lni-map-marker">
-                                                                    </i>{{ data.company }}</a></p>
+                                                            <p class="location" style = "font-family:  'Pretendard-Regular'; font-size:12px; "><a href="javascript:void(0)"><i class="lni lni-map-marker">
+                                                                    </i>{{ data.company}}</a></p>
                                                             <ul class="info">
                                                                 <li class="price">{% if data.money %}
                                                                                         {{ data.money }} 만원
@@ -204,7 +509,7 @@
                                         <div class="row">
                                             <div class="col-12">
                                                 <!-- Pagination -->
-                                                <div class="pagination left">
+                                                <div class="pagination left" style = "font-family:  'Pretendard-Regular';">
                                                     <ul class="pagination-list">
                                                     {% if posts.has_previous %}
                                                     <li><a href="?page={{posts.next_page_number}}"><i class="lni lni-chevron-left"></i></a></li>
@@ -238,178 +543,17 @@
                                         aria-labelledby="nav-list-tab">
                                         <div class="row">
                                             <div class="col-lg-12 col-md-12 col-12">
-                                                <!-- Start Single Item -->
-                                                <div class="single-item-grid">
-                                                    <div class="row align-items-center">
-                                                        <div class="col-lg-5 col-md-7 col-12">
-                                                            <div class="image">
-                                                                <a href="item-details.html"><img src="https://via.placeholder.com/600x400" alt="#"></a>
-                                                                <i class=" cross-badge lni lni-bolt"></i>
-                                                                <span class="flat-badge sale">Sale</span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-7 col-md-5 col-12">
-                                                            <div class="content">
-                                                                <a href="javascript:void(0)" class="tag">Others</a>
-                                                                <h3 class="title">
-                                                                    <a href="item-details.html">Travel Kit</a>
-                                                                </h3>
-                                                                <p class="location"><a href="javascript:void(0)"><i
-                                                                            class="lni lni-map-marker">
-                                                                        </i>San Francisco</a></p>
-                                                                <ul class="info">
-                                                                    <li class="price">$580.00</li>
-                                                                    <li class="like"><a href="javascript:void(0)"><i
-                                                                                class="lni lni-heart"></i></a>
-                                                                    </li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <!-- End Single Item -->
+
+                                            </div>
+                                           
                                             </div>
                                             <div class="col-lg-12 col-md-12 col-12">
-                                                <!-- Start Single Item -->
-                                                <div class="single-item-grid">
-                                                    <div class="row align-items-center">
-                                                        <div class="col-lg-5 col-md-7 col-12">
-                                                            <div class="image">
-                                                                <a href="item-details.html"><img src="https://via.placeholder.com/600x400" alt="#"></a>
-                                                                <i class=" cross-badge lni lni-bolt"></i>
-                                                                <span class="flat-badge sale">Sale</span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-7 col-md-5 col-12">
-                                                            <div class="content">
-                                                                <a href="javascript:void(0)" class="tag">Electronic</a>
-                                                                <h3 class="title">
-                                                                    <a href="item-details.html">Nikon DSLR Camera</a>
-                                                                </h3>
-                                                                <p class="location"><a href="javascript:void(0)"><i
-                                                                            class="lni lni-map-marker">
-                                                                        </i>Alaska, USA</a></p>
-                                                                <ul class="info">
-                                                                    <li class="price">$560.00</li>
-                                                                    <li class="like"><a href="javascript:void(0)"><i
-                                                                                class="lni lni-heart"></i></a>
-                                                                    </li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <!-- End Single Item -->
-                                            </div>
-                                            <div class="col-lg-12 col-md-12 col-12">
-                                                <!-- Start Single Item -->
-                                                <div class="single-item-grid">
-                                                    <div class="row align-items-center">
-                                                        <div class="col-lg-5 col-md-7 col-12">
-                                                            <div class="image">
-                                                                <a href="item-details.html"><img src="https://via.placeholder.com/600x400" alt="#"></a>
-                                                                <i class=" cross-badge lni lni-bolt"></i>
-                                                                <span class="flat-badge sale">Sale</span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-7 col-md-5 col-12">
-                                                            <div class="content">
-                                                                <a href="javascript:void(0)" class="tag">Mobile</a>
-                                                                <h3 class="title">
-                                                                    <a href="item-details.html">Apple Iphone X</a>
-                                                                </h3>
-                                                                <p class="location"><a href="javascript:void(0)"><i
-                                                                            class="lni lni-map-marker">
-                                                                        </i>Boston</a></p>
-                                                                <ul class="info">
-                                                                    <li class="price">$890.00</li>
-                                                                    <li class="like"><a href="javascript:void(0)"><i
-                                                                                class="lni lni-heart"></i></a>
-                                                                    </li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <!-- End Single Item -->
-                                            </div>
-                                            <div class="col-lg-12 col-md-12 col-12">
-                                                <!-- Start Single Item -->
-                                                <div class="single-item-grid">
-                                                    <div class="row align-items-center">
-                                                        <div class="col-lg-5 col-md-7 col-12">
-                                                            <div class="image">
-                                                                <a href="item-details.html"><img src="https://via.placeholder.com/600x400" alt="#"></a>
-                                                                <i class=" cross-badge lni lni-bolt"></i>
-                                                                <span class="flat-badge sale">Sale</span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-7 col-md-5 col-12">
-                                                            <div class="content">
-                                                                <a href="javascript:void(0)" class="tag">Furniture</a>
-                                                                <h3 class="title">
-                                                                    <a href="item-details.html">Poster Paint</a>
-                                                                </h3>
-                                                                <p class="location"><a href="javascript:void(0)"><i
-                                                                            class="lni lni-map-marker">
-                                                                        </i>Las Vegas</a></p>
-                                                                <ul class="info">
-                                                                    <li class="price">$85.00</li>
-                                                                    <li class="like"><a href="javascript:void(0)"><i
-                                                                                class="lni lni-heart"></i></a>
-                                                                    </li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <!-- End Single Item -->
-                                            </div>
-                                            <div class="col-lg-12 col-md-12 col-12">
-                                                <!-- Start Single Item -->
-                                                <div class="single-item-grid">
-                                                    <div class="row align-items-center">
-                                                        <div class="col-lg-5 col-md-7 col-12">
-                                                            <div class="image">
-                                                                <a href="item-details.html"><img src="https://via.placeholder.com/600x400" alt="#"></a>
-                                                                <i class=" cross-badge lni lni-bolt"></i>
-                                                                <span class="flat-badge rent">Rent</span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-7 col-md-5 col-12">
-                                                            <div class="content">
-                                                                <a href="javascript:void(0)" class="tag">Books & Magazine</a>
-                                                                <h3 class="title">
-                                                                    <a href="item-details.html">Story Book</a>
-                                                                </h3>
-                                                                <p class="location"><a href="javascript:void(0)"><i class="lni lni-map-marker">
-                                                                        </i>New York, USA</a></p>
-                                                                <ul class="info">
-                                                                    <li class="price">$120.00</li>
-                                                                    <li class="like"><a href="javascript:void(0)"><i
-                                                                                class="lni lni-heart"></i></a>
-                                                                    </li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <!-- End Single Item -->
+
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-12">
-                                                <!-- Pagination -->
-                                                <div class="pagination left">
-                                                    <ul class="pagination-list">
-                                                        <li><a href="javascript:void(0)">1</a></li>
-                                                        <li class="active"><a href="javascript:void(0)">2</a></li>
-                                                        <li><a href="javascript:void(0)">3</a></li>
-                                                        <li><a href="javascript:void(0)">4</a></li>
-                                                        <li><a href="javascript:void(0)"><i class="lni lni-chevron-right"></i></a></li>
-                                                    </ul>
-                                                </div>
-                                                <!--/ End Pagination -->
+
                                             </div>
                                         </div>
                                     </div>
