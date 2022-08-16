@@ -19,15 +19,15 @@ def blog_single_sidebar(request):
 def bookmarked_items(request, post_id):
     return render(request, 'bookmarked-items.html')
 
-def category(request):
-    all_develop_manager_data = post.objects.all().order_by("id")  # 모든 데이터 조회, 내림차순(-표시) 조회
-    paginator = Paginator(all_develop_manager_data, 12)
+def category(request, category_name):
+    # 디폴트값 웹 개발자, 카테고리 종류별로 리스트 만들어서 html에서 for문으로 출력하기
+    category_posts = post.objects.filter(category=category_name)  # 모든 데이터 조회, 내림차순(-표시) 조회
+    paginator = Paginator(category_posts, 12)
     page = int(request.GET.get('page', 1))
     posts = paginator.get_page(page)
-    develop_manager_data_list = paginator.get_page(page)
-    return render(request, 'category.html', {'develop_manager_data_list': develop_manager_data_list,
-                                             'posts':posts})
-
+    category_posts_list = paginator.get_page(page)
+    return render(request, 'category.html', {'category_posts_list': category_posts_list,
+                                             'posts': posts,})
 
 def coming_soon(request):
     return render(request, 'coming-soon.html')
