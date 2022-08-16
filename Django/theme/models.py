@@ -3,6 +3,7 @@ from django.utils.translation import gettext as _
 # Create your models here.
 
 class post(models.Model):
+    # post 모델
     id = models.IntegerField(primary_key=True)
     category = models.CharField(max_length=2000)
     page_url = models.CharField(max_length=2000)
