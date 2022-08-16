@@ -16,7 +16,7 @@ def blog_single(request):
 def blog_single_sidebar(request):
     return render(request, 'blog-single-sidebar.html')
 
-def bookmarked_items(request, post_id):
+def bookmarked_items(request):
     return render(request, 'bookmarked-items.html')
 
 def category(request, category_name):
