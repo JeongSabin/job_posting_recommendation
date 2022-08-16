@@ -9,6 +9,7 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from scipy.io import mmwrite, mmread
 import glob
 
+# 추천 받기 함수
 def getRecommendation(cosin_sim):
     simScore = list(enumerate(cosin_sim[-1]))
     simScore = sorted(simScore, key=lambda x:x[1], reverse=True)
