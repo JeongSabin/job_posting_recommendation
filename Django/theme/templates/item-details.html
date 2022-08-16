@@ -149,30 +149,48 @@
 
 
                             <!-- Start Single Block -->
-                            <div class="single-block ">
-                                <h3>Location</h3>
+                            <div class="mapouter">
+                                <div id="map" style="width:100%;height:300px;"></div>
+                                <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1e9cc86ceaac63df85f40ba8985961a7&libraries=services"></script>
                                 <div class="mapouter">
-                                    <div class="gmap_canvas"><iframe width="100%" height="300" id="gmap_canvas"
-                                            src="https://maps.google.com/maps?q=2880%20Broadway,%20New%20York&t=&z=13&ie=UTF8&iwloc=&output=embed"
-                                            frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a
-                                            href="https://putlocker-is.org"></a><br>
-                                        <style>
-                                            .mapouter {
-                                                position: relative;
-                                                text-align: right;
-                                                height: 300px;
-                                                width: 100%;
-                                            }
-                                        </style><a href="https://www.embedgooglemap.net">google map code for website</a>
-                                        <style>
-                                            .gmap_canvas {
-                                                overflow: hidden;
-                                                background: none !important;
-                                                height: 300px;
-                                                width: 100%;
-                                            }
-                                        </style>
-                                    </div>
+                                    <div id="map" style="width:100%;height:300px;"></div>
+                                    <script>
+                                        var mapContainer = document.getElementById('map'),
+                                            mapOption = {center: new kakao.maps.LatLng(37.572480297, 126.97677606),
+                                                level: 5
+                                        };
+                                        var map = new kakao.maps.Map(mapContainer, mapOption);
+                                        var geocoder = new kakao.maps.services.Geocoder();
+                                        geocoder.addressSearch('{{Post.place}}' , function(result, status)
+                                                { if (status === kakao.maps.services.Status.OK) {
+                                                    var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+                                                    var marker = new kakao.maps.Marker({
+                                                        map: map,
+                                                        position: coords
+                                                    });
+                                                    var infowindow = new kakao.maps.InfoWindow({
+                                                        content: '<div style="width:150px;text-align:center;padding:3px 0;">{{ Post.company }}</div>'
+                                                    });
+                                                    infowindow.open(map, marker);
+                                                    map.setCenter(coords);    }
+                                                }  );
+                                </script>
+                                    <style>
+                                        .mapouter {
+                                            position: relative;
+                                            text-align: right;
+                                            height: 300px;
+                                            width: 100%;
+                                        }
+                                    </style><a href="https://www.embedgooglemap.net">google map code for website</a>
+                                    <style>
+                                        .gmap_canvas {
+                                            overflow: hidden;
+                                            background: none !important;
+                                            height: 300px;
+                                            width: 100%;
+                                        }
+                                    </style>
                                 </div>
                             </div>
                             <!-- End Single Block -->
