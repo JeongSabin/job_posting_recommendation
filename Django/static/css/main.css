@@ -6834,10 +6834,7 @@ blockquote .shape {
     padding: 0;
   }
   .header .nav-item {
-    margin-right: 30px;
-  }
-  .header .nav-item a {
-    padding: 32px 0 !important;
+    margin-right: 15px;
   }
   .header .nav-item .sub-menu li a {
     padding: 12px 15px !important;
