@@ -14,7 +14,7 @@ import os
 
 def cosin_sim_calculation(category, url):
     # 절대경로 변경
-    df_reviews = pd.read_csv(f'/Library/work/python/job_posting_recommendation_last/Django/theme/web_using_data/{category}.csv')
+    df_reviews = pd.DataFrame(list(post.objects.filter(category=category).values()))
     Tfidf_matrix1 = mmread(f'/Library/work/python/job_posting_recommendation_last//rec_sys_model/wanted/TFIDF_model_welfare/{category}.mtx').tocsr()
     Tfidf_matrix2 = mmread(f'/Library/work/python/job_posting_recommendation_last//rec_sys_model/wanted/TFIDF_model_work/{category}.mtx').tocsr()
     job_idx = df_reviews[df_reviews['page_url'] == url].index[0]
@@ -24,13 +24,13 @@ def cosin_sim_calculation(category, url):
     return cosine_sim
 
 def getRecommendation(category, cosin_sim):
-    df_reviews = pd.read_csv(f'/Library/work/python/job_posting_recommendation_last/Django/theme/web_using_data/{category}.csv')
+    df_reviews = pd.DataFrame(list(post.objects.filter(category=category).values()))
 
     simScore = list(enumerate(cosin_sim[-1]))
     simScore = sorted(simScore, key=lambda x:x[1], reverse=True)
     simScore = simScore[:11]
     postIdx = [i[0] for i in simScore]
-    recPostList = df_reviews.iloc[postIdx, 1]
+    recPostList = df_reviews.iloc[postIdx, 0]
     return recPostList
 
 def recommendation_(category, cosine_sim):

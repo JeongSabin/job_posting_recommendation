@@ -66,18 +66,14 @@ def item_details(request, pk):
     Post = post.objects.get(pk=pk)
     category_ = Post.category
     url_ = Post.page_url
-    print(category_, url_)
     cosine_sim = rm.cosin_sim_calculation(category_, url_)
     recommendation_lst = rm.recommendation_(category_, cosine_sim)
     lst = []
     for i in recommendation_lst:
         lst.append(i)
-    print(lst)
     data_lst = []
     for i in lst:
-        data_lst.append(post.objects.get(page_url=i, category=category_))
-    print('data_lst : ', list(data_lst))
-    print('Post : ', Post)
+        data_lst.append(post.objects.get(category=category_, id=i))
     return render(request, 'item-details.html', {'Post':Post,
                                                  'data_lst':data_lst})
 
