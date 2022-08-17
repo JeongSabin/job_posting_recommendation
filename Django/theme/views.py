@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from .models import *
 from django.core.paginator import Paginator
-
+import theme.recommendation_module as rm
 # Create your views here.
 
 def about_us(request):
@@ -64,7 +64,22 @@ def invoice(request):
 
 def item_details(request, pk):
     Post = post.objects.get(pk=pk)
-    return render(request, 'item-details.html', {'Post':Post})
+    category_ = Post.category
+    url_ = Post.page_url
+    print(category_, url_)
+    cosine_sim = rm.cosin_sim_calculation(category_, url_)
+    recommendation_lst = rm.recommendation_(category_, cosine_sim)
+    lst = []
+    for i in recommendation_lst:
+        lst.append(i)
+    print(lst)
+    data_lst = []
+    for i in lst:
+        data_lst.append(post.objects.get(page_url=i, category=category_))
+    print('data_lst : ', list(data_lst))
+    print('Post : ', Post)
+    return render(request, 'item-details.html', {'Post':Post,
+                                                 'data_lst':data_lst})
 
 def item_listing_grid(request):
     return render(request, 'item-listing-grid.html')

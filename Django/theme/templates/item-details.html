@@ -203,6 +203,46 @@
         </div>
     </section>
     <!-- End Item Details -->
+    <div class="row">
+
+            {% if data_lst %}
+                {% for data in data_lst %}
+
+                    <div class="col-lg-4 col-md-6 col-12">
+                    <div class="single-item-grid">
+                    <div class="image">
+                        <a href="item-details/{{ data.pk }}"><img src={{ data.picture_url }} alt="#"></a>
+                        <span style = "font-family:  'Pretendard-Regular';" class="flat-badge sale">구인 중</span>
+                    </div>
+                    <div class="content">
+                        <a href="javascript:void(0)" class="tag">{{ data.category }}</a>
+                        <h3 class="title">
+                            <a href="item-details/{{ data.pk }}">{{ data.title }}</a>
+                        </h3>
+                        <p class="location" style = "font-family:  'Pretendard-Regular'; font-size:12px; "><a href="javascript:void(0)"><i class="lni lni-map-marker">
+                                </i>{{ data.company}}</a></p>
+                        <ul class="info">
+                            <li class="price">{% if data.money %}
+                                                    {{ data.money }} 만원
+                                                {% else %}
+                                                    연봉정보 없음
+                                                {% endif %}</li>
+                            <li class="like"><a href="javascript:void(0)"><i
+                                        class="lni lni-heart"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                </div>
+                {% endfor %}
+            {% else %}
+                <tr>
+                    <td>작성된 게시글이 없습니다.</td>
+                </tr>
+            {% endif %}
+            <!-- End Single Item -->
+
+    </div>
 
 
     <!-- ========================= scroll-top ========================= -->
