@@ -2,7 +2,8 @@
 <html class="no-js" lang="en">
 {% include "head.html" %}
 {% include "header.html" %}
-{% load static %}
+
+<!--수정-->
 <body>
     <!--[if lte IE 9]>
       <p class="browserupgrade">
@@ -23,27 +24,31 @@
 <!--    </div>-->
 <!--    &lt;!&ndash; /End Preloader &ndash;&gt;-->
 
-    <div class="breadcrumbs" style = "background: #2c5bf0;">
+
+    <!-- Start Breadcrumbs -->
+    <<div class="breadcrumbs" style = "background: #2c5bf0;">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-6 col-md-6 col-12">
                     <div class="breadcrumbs-content">
-                        <h1 style = "font-family:  'Pretendard-Regular'; color: #ffffff;" class="page-title">Blog Grid Sidebar</h1>
+                        <h1 style = "font-family:  'Pretendard-Regular'; color: #ffffff;" class="page-title">채용공고</h1>
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6 col-12">
-
                 </div>
             </div>
         </div>
     </div>
     <!-- End Breadcrumbs -->
 
-    <!-- Start Blog Singel Area -->
-    <section class="section latest-news-area blog-list">
+    <!-- Start Category -->
+    <section style = "font-family:  'Pretendard-Regular';" class="category-page section">
         <div class="container">
             <div class="row">
 
+                    <div class="category-grid-list">
+                        <div class="row">
+                            <div class="col-12" style="text-align: center;">
         <div style="text-align: center;">
           <br>
           <br>
@@ -57,23 +62,84 @@
           </a>
         </div>
 
+
+                            </div>
                         </div>
                     </div>
+                                <div class="tab-content" id="nav-tabContent">
+                                    <div class="tab-pane fade show active" id="nav-grid" role="tabpanel"
+                                        aria-labelledby="nav-grid-tab">
+                                        <div class="row">
 
+                                                {% if category_posts_list %}
+                                                    {% for data in category_posts_list %}
+                                                        <div class="col-lg-4 col-md-6 col-12">
+                                                        <div class="single-item-grid">
+                                                        <div class="image">
+                                                            <a href="item-details/{{ data.pk }}"><img src={{ data.picture_url }} alt="#"></a>
+                                                            <span style = "font-family:  'Pretendard-Regular';" class="flat-badge sale">구인 중</span>
+                                                        </div>
+                                                        <div class="content">
+                                                            <a href="javascript:void(0)" class="tag">{{ data.category }}</a>
+                                                            <h3 class="title">
+                                                                <a href="item-details/{{ data.pk }}">{{ data.title }}</a>
+                                                            </h3>
+                                                            <p class="location" style = "font-family:  'Pretendard-Regular'; font-size:12px; "><a href="javascript:void(0)"><i class="lni lni-map-marker">
+                                                                    </i>{{ data.company}}</a></p>
+                                                            <ul class="info">
+                                                                <li class="price">{% if data.money %}
+                                                                                        {{ data.money }} 만원
+                                                                                    {% else %}
+                                                                                        연봉정보 없음
+                                                                                    {% endif %}</li>
+                                                                <li class="like"><a href="javascript:void(0)"><i
+                                                                            class="lni lni-heart"></i></a>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                    </div>
+                                                    {% endfor %}
+                                                {% else %}
+                                                    <tr>
+                                                        <td>작성된 게시글이 없습니다.</td>
+                                                    </tr>
+                                                {% endif %}
+                                                <!-- End Single Item -->
+
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-12">
+
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="nav-list" role="tabpanel"
+                                        aria-labelledby="nav-list-tab">
+                                        <div class="row">
+                                            <div class="col-lg-12 col-md-12 col-12">
+
+                                            </div>
+
+                                            </div>
+                                            <div class="col-lg-12 col-md-12 col-12">
+
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-12">
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <aside class="col-lg-4 col-md-5 col-12">
-                    <div class="sidebar blog-grid-page">
-
-
-                        <div class="col-lg-6 col-12">
-
-                        </div>
-                    </div>
-                </aside>
             </div>
         </div>
     </section>
-    <!-- End Blog Singel Area -->
+    <!-- End Category -->
 
 
 
@@ -83,7 +149,7 @@
         <i class="lni lni-chevron-up"></i>
     </a>
 
-    <!-- ========================= JS here ========================= -->
+    <!-- ========================= JS here is ========================= -->
     <script src="/static/js/bootstrap.min.js"></script>
     <script src="/static/js/wow.min.js"></script>
     <script src="/static/js/tiny-slider.js"></script>
