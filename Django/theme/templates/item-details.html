@@ -89,7 +89,7 @@
                                     </li>
                                     <li>
                                         <a href="mailto:example@gmail.com" class="mail">
-                                            <i><img src="/static/images/book.png" alt="book" style="width: 36px; height: 36px;"></i>
+                                            <i><img src="/static/images/heart.png" alt="heart" style="width: 36px; height: 36px;"></i>
                                         </a>
                                     </li>
                                 </ul>
@@ -199,18 +199,18 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
+
+
     <!-- End Item Details -->
-    <div class="row">
+            <div class="row">
 
             {% if data_lst %}
                 {% for data in data_lst %}
 
-                    <div class="col-lg-4 col-md-6 col-12">
-                    <div class="single-item-grid">
-                    <div class="image">
+    <div class="col-lg-4 col-md-6 col-12">
+        <div class="single-item-grid">
+            <div class="image">
+
                         <a href="http://127.0.0.1:8000/item-details/{{ data.pk }}"><img src={{ data.picture_url }} alt="#"></a>
                         <span style = "font-family:  'Pretendard-Regular';" class="flat-badge sale">구인 중</span>
                     </div>
@@ -241,10 +241,13 @@
                 </tr>
             {% endif %}
             <!-- End Single Item -->
-
+            </div>
+            </div>
+        </div>
     </div>
-
-
+            </div>
+        </div>
+    </section>
     <!-- ========================= scroll-top ========================= -->
     <a href="#" class="scroll-top btn-hover">
         <i class="lni lni-chevron-up"></i>

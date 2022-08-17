@@ -5,6 +5,7 @@ from theme.views import *
 
 app_name = 'theme'
 
+# 관련 템플릿 url 연결
 urlpatterns = [
     path('', index, name='index'),
     path('about-us.html', about_us, name='about_us'),
