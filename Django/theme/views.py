@@ -69,11 +69,25 @@ def item_details(request, pk):
     cosine_sim = rm.cosin_sim_calculation(category_, url_)
     recommendation_lst = rm.recommendation_(category_, cosine_sim)
     lst = []
+
     for i in recommendation_lst:
         lst.append(i)
+    print(lst)
     data_lst = []
+    company_list = []
+    cnt = 0
     for i in lst:
-        data_lst.append(post.objects.get(category=category_, id=i))
+        if cnt < 6:
+            if post.objects.get(category=category_, id=i).company not in company_list:
+                company_name = ''.join(post.objects.get(category=category_, id=i).company)
+                company_name.replace(' ', '')
+                data_lst.append(post.objects.get(category=category_, id=i))
+                company_list.append(company_name)
+                cnt += 1
+            else:
+                pass
+        else:
+            break
     return render(request, 'item-details.html', {'Post':Post,
                                                  'data_lst':data_lst})
 

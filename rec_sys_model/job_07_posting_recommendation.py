@@ -20,10 +20,10 @@ df_reviews = pd.read_csv('./rec_sys_model/wanted/clear_data/13_머신러닝엔�
 df_reviews.dropna(inplace=True)
 df_reviews.reset_index(inplace=True)
 Tfidf_matrix1 = mmread('./rec_sys_model/wanted/TFIDF_model_work/13_머신러닝엔지니어_Tfidf_wanted_work.mtx').tocsr()
-Tfidf_matrix2 = mmread('./rec_sys_model/wanted/TFIDF_model_welfare/13_머신러닝엔지니어_Tfidf_wanted_welfare.mtx').tocsr()
+Tfidf_matrix2 = mmread('./rec_sys_model/wanted/TFIDF_model_welfare/머신러닝엔지니어_Tfidf_wanted_welfare.mtx').tocsr()
 with open('./rec_sys_model/wanted/TFIDF_model_work/13_머신러닝엔지니어_Tfidf_wanted_work.pickle', 'rb') as f:
     Tfidf1 = pickle.load(f)
-with open('./rec_sys_model/wanted/TFIDF_model_welfare/13_머신러닝엔지니어_Tfidf_wanted_welfare.pickle', 'rb') as g:
+with open('./rec_sys_model/wanted/TFIDF_model_welfare/머신러닝엔지니어_Tfidf_wanted_welfare.pickle', 'rb') as g:
     Tfidf2 = pickle.load(g)
 
 # url 이용
