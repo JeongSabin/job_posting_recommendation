@@ -45,9 +45,11 @@
     <!-- Start Item Details -->
     <section class="item-details section">
         <div class="container">
+
             <div class="top-area">
                 <div class="row">
                     <div class="col-lg-6 col-md-12 col-12">
+
                         <div class="product-images">
                             <main id="gallery">
                                 <div class="main-img">
@@ -88,7 +90,8 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="mailto:example@gmail.com" class="mail">
+
+                                        <a class="mail">
                                             <i><img src="/static/images/heart.png" alt="heart" style="width: 36px; height: 36px;"></i>
                                         </a>
                                     </li>
@@ -101,15 +104,14 @@
             </div>
             <div style = "font-family:  'Pretendard-Regular'; color: #636363;"  class="item-details-blocks">
                 <div class="row">
-                    <div class="col-lg-8 col-md-7 col-12">
+                    <div class="col-lg-8 col-md-7 col-12" >
                         <!-- Start Single Block -->
-                        <div class="single-block description">
-                            <h3 style = "-webkit-text-size-adjust: 100%;
+                        <div class="single-block description"  >                                                          <h3>세부사항</h3>
+                                <h3 style = "-webkit-text-size-adjust: 100%;
     -webkit-tap-highlight-color: rgba(0,0,0,0);    -webkit-font-smoothing: antialiased;    box-sizing: border-box;
     padding: 0;   border: 0;    color: #333;    font-size: 16px;    line-height: 1.75;
     margin: 20px 0 0;    font-weight: 600; font-family:  'Pretendard-Regular'; color: #2b2b2b;">주요업무</h3>
-                            <pre style = "font-size:15px; font-family:  'Pretendard-Regular'; color: #2b2b2b;">{{ Post.work }}</pre>
-                            <ul>
+                                <pre style = "font-size:15px; font-family:  'Pretendard-Regular'; color: #2b2b2b; ">{{ Post.work }}</pre>
                                 <h3 style = "-webkit-text-size-adjust: 100%;
     -webkit-tap-highlight-color: rgba(0,0,0,0);    -webkit-font-smoothing: antialiased;    box-sizing: border-box;
     padding: 0;   border: 0;    color: #333;    font-size: 16px;    line-height: 1.75;
@@ -125,30 +127,48 @@
     padding: 0;   border: 0;    color: #333;    font-size: 16px;    line-height: 1.75;
     margin: 20px 0 0;    font-weight: 600; font-family:  'Pretendard-Regular'; color: #2b2b2b;">혜택 및 복지</h3>
                                 <pre style = "font-size:15px; font-family:  'Pretendard-Regular'; color: #2b2b2b;">{{ Post.welfare }}</pre>
-                            </ul>
-
                         </div>
                         <!-- End Single Block -->
                         <!-- Start Single Block -->
-                        <div class="single-block tags">
-                            <h3>Tags</h3>
-                            <ul>
-                                <li><a href="javascript:void(0)">Bike</a></li>
-                                <li><a href="javascript:void(0)">Services</a></li>
-                                <li><a href="javascript:void(0)">Brand</a></li>
-                                <li><a href="javascript:void(0)">Popular</a></li>
-                            </ul>
-                        </div>
+
                         <!-- End Single Block -->
 
                         <!-- End Single Block -->
 
                     </div>
+
+
+
+
                     <div class="col-lg-4 col-md-5 col-12">
+                            <div class="item-details-sidebar">
+                            <!-- Start Single Block -->
+                            <div class="single-block tags">
+                                <h3>기술스택</h3>
+                                <tbody>
+                                {% for skill in post.skill_stack %}
+                                <tr>
+                                    <li>
+                                        <a href="javascript:void(0)">{{ skill }}</a>
+                                    </li>
+                                </tr>
+                                {% endfor %}
+                                <tbody>
+
+                                <ul>
+                                    {% for skill_stack_ in skills %}
+                                    <li><a href="javascript:void(10)">{{ skill_stack_ }}</a></li>
+{#                                <li><a href="javascript:void(0)">Services</a></li>#}
+{#                                <li><a href="javascript:void(0)">Brand</a></li>#}
+
+                                    {% endfor %}
+                            </ul>
+                        </div>
+                        </div>
                         <div class="item-details-sidebar">
                             <!-- Start Single Block -->
                             <div class="single-block ">
-                                <h3>Location</h3>
+                                <h3>위치</h3>
                             <h6><dd>{{ Post.company }}</dd></h6>
                              <h8><dd>주소 : {{ Post.place }}</dd></h8>
                                 <div class="mapouter">
@@ -202,7 +222,12 @@
 
 
     <!-- End Item Details -->
-            <div class="row">
+                <section class="item-details section">
+
+                        <div class="top-area">
+                            <h4>이 회사도 추천드립니다</h4>
+                            <div class="col-lg-12 col-md-12 col-12">
+                                <div class="row">
 
             {% if data_lst %}
                 {% for data in data_lst %}
@@ -242,9 +267,10 @@
             {% endif %}
             <!-- End Single Item -->
             </div>
-            </div>
-        </div>
-    </div>
+
+                            </div>
+                        </div>
+                    </div>
             </div>
         </div>
     </section>
@@ -280,3 +306,18 @@
 </body>
 {% include "footer.html" %}
 </html>
+
+  <script>
+    $(document).ready(function(){
+
+    $.ajaxSetup({
+        headers:{
+            'X-CSRFToken': $('meta[name="csrf-token"]').attr('content')
+        }
+    })
+    });
+    $(".addWishlist, #addWishlist").click(function(){
+
+    let company_id = $(this).data('id');
+    let customer_id= '{{customer.id}}';
+  </script>
