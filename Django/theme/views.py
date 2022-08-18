@@ -62,17 +62,18 @@ def index3(request):
 def invoice(request):
     return render(request, 'invoice.html')
 
+
 def item_details(request, pk):
     Post = post.objects.get(pk=pk)
+    skill = Post.skill_stack
+    skills = list(skill.split())
     category_ = Post.category
     url_ = Post.page_url
     cosine_sim = rm.cosin_sim_calculation(category_, url_)
     recommendation_lst = rm.recommendation_(category_, cosine_sim)
     lst = []
-
     for i in recommendation_lst:
         lst.append(i)
-    print(lst)
     data_lst = []
     company_list = []
     cnt = 0
@@ -89,7 +90,8 @@ def item_details(request, pk):
         else:
             break
     return render(request, 'item-details.html', {'Post':Post,
-                                                 'data_lst':data_lst})
+                                                 'data_lst':data_lst
+                                                 ,'skills':skills})
 
 def item_listing_grid(request):
     return render(request, 'item-listing-grid.html')
@@ -126,3 +128,6 @@ def profile_settings(request):
 
 def registration(request):
     return render(request, 'registration.html')
+def portfolio(request):
+    return render(request, 'faq.html')
+
