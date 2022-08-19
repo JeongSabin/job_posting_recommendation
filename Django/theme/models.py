@@ -23,6 +23,9 @@ class post(models.Model):
     scaler_money = models.CharField(max_length=2000)
     def __str__(self):
         return self.title
+class bookmark(models.Model):
+    id = models.IntegerField(primary_key=True)
+    post = models.ForeignKey(post, on_delete=models.CASCADE)
 # class like_posts(models.Model):
 #     id = models.IntegerField(primary_key=True)
 #     post = models.ForeignKey(post, on_delete=models.CASCADE)

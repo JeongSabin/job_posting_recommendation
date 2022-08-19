@@ -402,8 +402,8 @@ a:focus {
                                                                                     {% else %}
                                                                                         연봉정보 없음
                                                                                     {% endif %}</li>
-                                                                <li class="like"><a href="javascript:void(0)"><i
-                                                                            class="lni lni-heart"></i></a>
+                                                                <li class="like"><a onclick='test({{ data.pk }})' id='{{ data.pk }}' type="button" class="lni lni-heart"><i
+                                                                            ></i></a>
                                                                 </li>
                                                             </ul>
                                                         </div>
@@ -493,6 +493,26 @@ a:focus {
     <script src="/static/js/tiny-slider.js"></script>
     <script src="/static/js/glightbox.min.js"></script>
     <script src="/static/js/main.js"></script>
+    <script>
+        function test(pk){
+            if(document.getElementById(pk).className==='lni lni-heart'){
+                document.getElementById(pk).className = 'lni lni-heart-filled';
+            } else {
+                document.getElementById(pk).className = 'lni lni-heart';
+            }
+        }
+    </script>
+
+    <style>
+        .button-on {
+            background: red;
+        }
+
+        .button-off {
+            background: blue;
+        }
+    </style>
+    </script>>
 </body>
 {% include "footer.html" %}
 </html>
