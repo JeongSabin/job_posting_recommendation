@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.db import models
 from django.utils.translation import gettext as _
 # Create your models here.
@@ -21,11 +22,12 @@ class post(models.Model):
     first_cleaned_welfare = models.CharField(max_length=2000)
     first_cleaned_works = models.CharField(max_length=2000)
     scaler_money = models.CharField(max_length=2000)
+
     def __str__(self):
         return self.title
 class bookmark(models.Model):
-    id = models.IntegerField(primary_key=True)
     post = models.ForeignKey(post, on_delete=models.CASCADE)
+    # id = models.IntegerField(primary_key=True)
 # class like_posts(models.Model):
 #     id = models.IntegerField(primary_key=True)
 #     post = models.ForeignKey(post, on_delete=models.CASCADE)
