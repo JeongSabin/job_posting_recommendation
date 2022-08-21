@@ -402,9 +402,15 @@ a:focus {
                                                                                     {% else %}
                                                                                         연봉정보 없음
                                                                                     {% endif %}</li>
-                                                                <li class="like"><a onclick='test({{ data.pk }})' id='{{ data.pk }}' type="button" class="lni lni-heart"><i
-                                                                            ></i></a>
+
+<!--                                                                <li class="like"><a onclick='test({{ data.pk }})' id='{{ data.pk }}' type="button" class="lni lni-heart">-->
+<!--                                                                            ></i></a>-->
+<!--                                                                </li>-->
+                                                                <li class="like"><a onclick='sendPost (event, {{ data.pk }})' type="button" class="lni lni-heart">
+                                                                            </i></a>
+
                                                                 </li>
+                                                                참고 : {{ data.pk }}
                                                             </ul>
                                                         </div>
                                                     </div>
@@ -500,6 +506,68 @@ a:focus {
             } else {
                 document.getElementById(pk).className = 'lni lni-heart';
             }
+        }
+    </script>
+
+
+    <script type="text/javascript">
+
+        function getCookie(name) {
+            var cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                var cookies = document.cookie.split(';');
+                for (var i = 0; i < cookies.length; i++) {
+                    var cookie = cookies[i].trim();
+                    // Does this cookie string begin with the name we want?
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+
+        function uuidv4() {
+          return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+            var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+            return v.toString(16);
+          });
+        }
+
+        let device = getCookie('device')
+
+        if (device == null || device == undefined){
+            device = uuidv4()
+        }
+
+        document.cookie ='device=' + device + ";domain=;path=/"
+
+        function sendPost(e, pk) {
+            // 좋아요 버튼이 빈하트이면 on 아니면 off
+            const like = e.target.classList.contains('lni-heart')? 'on': 'off';
+
+            // 좋아요 등록, 취소 처리 api 호출
+            fetch('/likeSwitch', {
+                method: 'post',
+                body: JSON.stringify({'pk': pk, 'like': like}),
+                headers: {
+                  'Content-Type': 'application/json',
+                  // 'Content-Type': 'application/x-www-form-urlencoded',
+                },
+            }).then(res => res.json()).then(json => {
+                if(json.code == 'success') {
+                    if(like == 'on') {
+                        // 좋아요 등록 처리일 경우 빈하트 -> 하트로 변경
+                        e.target.classList.remove('lni-heart');
+                        e.target.classList.add('lni-heart-filled');
+                    } else if(like == 'off') {
+                        // 좋아요 취소 처리일 경우 하트 -> 빈하트로 변경
+                        e.target.classList.remove('lni-heart-filled');
+                        e.target.classList.add('lni-heart');
+                    }
+                }
+            })
         }
     </script>
 

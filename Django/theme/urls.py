@@ -3,10 +3,13 @@ from django.urls import path
 import theme
 from theme.views import *
 
+
 app_name = 'theme'
+
 
 # 관련 템플릿 url 연결
 urlpatterns = [
+    path('likeSwitch', likeSwitch, name='likeSwitch'),
     path('', index, name='index'),
     path('about-us.html', about_us, name='about_us'),
     path('blog-grid-sidebar.html', blog_grid_sidebar, name='blog_grid_sidebar'),
@@ -21,8 +24,6 @@ urlpatterns = [
     path('error.html', error, name='error'),
     path('faq.html', faq, name='faq'),
     path('favourite-items.html', favourite_items, name='favourite_items'),
-    # path('index2.html', index2, name='index2'),
-    # path('index3.html', index3, name='index3'),
     path('invoice.html', invoice, name='invoice'),
     path('item-details/<int:pk>', item_details, name='item_details'),
     path('item-listing-grid.html', item_listing_grid, name='item_listing_grid'),

@@ -1,8 +1,43 @@
-from django.shortcuts import render
+from django.http import JsonResponse, HttpResponse
+from django.shortcuts import render, get_object_or_404, redirect
+from django.views.decorators.csrf import csrf_exempt
+from django.utils.decorators import method_decorator
+from rest_framework.utils import json
+
 from .models import *
 from django.core.paginator import Paginator
 import theme.recommendation_module as rm
+from django.db import connection
+
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import status
 # Create your views here.
+
+# @method_decorator(csrf_exempt, name='dispatch')
+# @csrf_exempt
+
+
+likes = []
+
+def likeSwitch(request):
+    try:
+        parms = json.loads(request.body)
+        if(parms['like'] == 'on'):
+            # 좋아요 등록 처리
+            print(parms['pk'])
+            likes.append(parms['pk'])
+            print(likes)
+        elif(parms['like'] == 'off'):
+            # 좋아요 취소 처리
+            likes.remove(parms['pk'])
+            print('등록취소 로직추가예정')
+
+        code = 'success'
+    except Exception as e:
+        code = 'fail'
+
+    return JsonResponse({'code': code})
 
 def about_us(request):
     return render(request, 'about-us.html')
@@ -18,6 +53,8 @@ def blog_single_sidebar(request):
 
 def bookmarked_items(request):
     return render(request, 'bookmarked-items.html')
+
+
 
 def category(request, category_name):
     # 디폴트값 웹 개발자, 카테고리 종류별로 리스트 만들어서 html에서 for문으로 출력하기
@@ -128,6 +165,6 @@ def profile_settings(request):
 
 def registration(request):
     return render(request, 'registration.html')
+
 def portfolio(request):
     return render(request, 'faq.html')
-
