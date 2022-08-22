@@ -67,8 +67,13 @@ def category(request, category_name):
     page = int(request.GET.get('page', 1))
     posts = paginator.get_page(page)
     category_posts_list = paginator.get_page(page)
+    bookmarked = list(bookmark.objects.all())
+    bookmarked_post_id_list = list(map(int, bookmarked))
+
+
     return render(request, 'category.html', {'category_posts_list': category_posts_list,
-                                             'posts': posts,})
+                                             'posts': posts,
+                                             'bookmarked_post_id_list': bookmarked_post_id_list,})
 
 def coming_soon(request):
     return render(request, 'coming-soon.html')

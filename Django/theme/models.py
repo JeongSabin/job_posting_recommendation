@@ -28,6 +28,8 @@ class post(models.Model):
 class bookmark(models.Model):
     id = models.IntegerField(primary_key=True)
     post_id = models.IntegerField()
+    def __int__(self):
+        return self.post_id
 # class like_posts(models.Model):
 #     id = models.IntegerField(primary_key=True)
 #     post = models.ForeignKey(post, on_delete=models.CASCADE)

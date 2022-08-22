@@ -403,9 +403,14 @@ a:focus {
                                                                                         연봉정보 없음
                                                                                     {% endif %}</li>
 
+                                                                {% if data.pk in bookmarked_post_id_list %}
 
-                                                                <li class="like"><a onclick='sendPost (event, {{ data.pk }})' type="button" class="lni lni-heart">
+                                                                    <li class="like"><a onclick='sendPost (event, {{ data.pk }})' type="button" class="lni lni-heart-filled">
                                                                             </i></a>
+                                                                {% else %}
+                                                                    <li class="like"><a onclick='sendPost (event, {{ data.pk }})' type="button" class="lni lni-heart">
+                                                                                </i></a>
+                                                                {% endif %}
 
                                                                 </li>
                                                             </ul>
