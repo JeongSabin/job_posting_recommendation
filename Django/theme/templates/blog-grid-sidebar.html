@@ -56,10 +56,19 @@
           <h6 style = "font-family: 'Pretendard-Regular'; color:#6f6f6f; line-height:1.6em; font-size: 13px;">내 북마크를 분석하여 나와 딱 맞는 회사를 추천해드려요.<br>
           북마크 공고의 주요업무, 복지, 연봉을 기반으로 책정되었습니다.</h6>
           <br>
-          <a href="http://127.0.0.1:8000/bookmarked-items.html">
-          <h6 style = "font-family: 'Pretendard-Bold'; color:#2c5bf0; line-height:1.6em; font-size: 13px;">더 세밀한 추천을 받아보고 싶다면 내 북마크를 다시 설정해보세요!
+        <h6 style = "font-family: 'Pretendard-Bold'; color:#2c5bf0; line-height:1.6em; font-size: 13px;">내가 좋아한 기업을 기준으로 AI추천을 진행합니다.
           </h6>
+          <br>
+          <a href="http://127.0.0.1:8000/bookmarked-items.html">
+          <img src="/static/images/button.png" alt="recommendation" style="width: 70%; height: 70%;">
+              <br>
+              <div>
+                  <br>
+                  <br>
+                  <br>
+              </div>
           </a>
+
         </div>
 
 
@@ -70,7 +79,6 @@
                                     <div class="tab-pane fade show active" id="nav-grid" role="tabpanel"
                                         aria-labelledby="nav-grid-tab">
                                         <div class="row">
-
                                                 {% if post_list %}
                                                     {% for data in post_list %}
                                                         <div class="col-lg-4 col-md-6 col-12">
