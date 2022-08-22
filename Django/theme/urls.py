@@ -12,6 +12,7 @@ urlpatterns = [
     path('likeSwitch', likeSwitch, name='likeSwitch'),
     path('', index, name='index'),
     path('about-us.html', about_us, name='about_us'),
+    path('index2.html', index2, name='index2'),
     path('blog-grid-sidebar.html', blog_grid_sidebar, name='blog_grid_sidebar'),
     path('blog-single.html', blog_single, name='blog_single'),
     path('blog-single-sidebar.html', blog_single_sidebar, name='blog_single_sidebar'),
