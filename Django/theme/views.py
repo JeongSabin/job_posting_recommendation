@@ -46,17 +46,49 @@ def likeSwitch(request):
 def about_us(request):
     return render(request, 'about-us.html')
 
-def blog_grid_sidebar(request):
+def bookmark_recommendation(request):
     bookmarked = list(bookmark.objects.all())
     bookmarked_post_id_list = list(map(int, bookmarked))
-    print(bookmarked_post_id_list)
     post_list = post.objects.filter(id__in=bookmarked_post_id_list)
     bookmarked = list(bookmark.objects.all())
     bookmarked_post_id_list = list(map(int, bookmarked))
+    category_lst = []
+    for i in post_list:
+        if i.category not in category_lst:
+            category_lst.append(i.category)
+        else:
+            pass
+    recommendation_lst = rm.Make_Tfidf_model(category_lst, post_list)
+    lst = []
+    for i in recommendation_lst:
+        lst.append(i)
+    data_lst = []
+    company_list = []
+    cnt = 0
+    for i in lst:
+        if cnt < 6:
+            if post.objects.get(id=i).company not in company_list:
+                company_name = ''.join(post.objects.get(id=i).company)
+                company_name.replace(' ', '')
+                data_lst.append(post.objects.get(id=i))
+                company_list.append(company_name)
+                cnt += 1
+            else:
+                pass
+        else:
+            break
+
+    return render(request, 'bookmark_recommendation.html', {'data_lst': data_lst})
 
 
-    return render(request, 'blog-grid-sidebar.html', {'post_list': post_list,
-                                                      'bookmarked_post_id_list': bookmarked_post_id_list,})
+
+def blog_grid_sidebar(request):
+    bookmarked = list(bookmark.objects.all())
+    bookmarked_post_id_list = list(map(int, bookmarked))
+    post_list = post.objects.filter(id__in=bookmarked_post_id_list)
+
+
+    return render(request, 'blog-grid-sidebar.html', {'post_list': post_list,})
 
 def blog_single(request):
     return render(request, 'blog-single.html')

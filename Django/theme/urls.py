@@ -13,6 +13,7 @@ urlpatterns = [
     path('', index, name='index'),
     path('about-us.html', about_us, name='about_us'),
     path('blog-grid-sidebar.html', blog_grid_sidebar, name='blog_grid_sidebar'),
+    path('bookmark_recommendation.html', bookmark_recommendation, name='bookmark_recommendation'),
     path('blog-single.html', blog_single, name='blog_single'),
     path('blog-single-sidebar.html', blog_single_sidebar, name='blog_single_sidebar'),
     path('bookmarked-items.html', bookmarked_items, name='bookmarked_items'),

@@ -7,10 +7,13 @@ import glob
 df = pd.DataFrame()
 data_paths = glob.glob('./rec_sys_model/wanted/preprocessing_data/*')
 data_paths = sorted(data_paths)
-job_list = ['웹', '서버', '프론트엔드', '소프트웨어', '자바', '안드로이드', 'iOS', 'Nodejs', 'C++', '데이터엔지니어', 'DevOps', '파이썬', '시스템관리자', '머신러닝엔지니어',
-                '데이터사이언티스트', '빅데이터엔지니어', 'QA', '기술지원', '개발매니저', '보안엔지니어', '프로덕트매니저', '블록체인엔지니어', 'PHP개발자', '임베디드개발자', '웹퍼블리셔',
-                '크로스플랫폼', '하드웨어엔지니어', 'DBA', 'NET개발자', '영상음성엔지니어', 'CTO', '그래픽스엔지니어', 'VR엔지니어', 'BI 엔지니어', 'ERP전문가', '루비온레일즈개발자',
-                'CIO']
+job_list = ['웹 개발자', '서버 개발자', '프론트엔드 개발자', '소프트웨어 엔지니어', '자바 개발자', '안드로이드 개발자', 'iOS 개발자', 'Node.js 개발자', 'C,C++ 개발자', '데이터 엔지니어', 'DevOps', '파이썬 개발자', '시스템,네트워크 관리자', '머신러닝 엔지니어',
+                '데이터 사이언티스트', '빅데이터 엔지니어', 'QA,테스트 엔지니어', '기술지원', '개발 매니저', '보안 엔지니어', '프로덕트 매니저', '블록체인 플랫폼 엔지니어', 'PHP 개발자', '임베디드 개발자', '웹 퍼블리셔',
+                '크로스플랫폼 앱 개발자', '하드웨어 엔지니어', 'DBA', 'NET 개발자', '영상,음성 엔지니어', 'CTO,Chief Technology Officer', '그래픽스 엔지니어', 'VR엔지니어', 'BI 엔지니어', 'ERP전문가', '루비온레일즈 개발자',
+                'CIO,Chief Information Officer']
+job_list = sorted(job_list)
+print(job_list)
+# exit()
 cnt = 0
 for path in data_paths:
     df_reviews = pd.read_csv(path)
