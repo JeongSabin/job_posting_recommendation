@@ -47,7 +47,16 @@ def about_us(request):
     return render(request, 'about-us.html')
 
 def blog_grid_sidebar(request):
-    return render(request, 'blog-grid-sidebar.html')
+    bookmarked = list(bookmark.objects.all())
+    bookmarked_post_id_list = list(map(int, bookmarked))
+    print(bookmarked_post_id_list)
+    post_list = post.objects.filter(id__in=bookmarked_post_id_list)
+    bookmarked = list(bookmark.objects.all())
+    bookmarked_post_id_list = list(map(int, bookmarked))
+
+
+    return render(request, 'blog-grid-sidebar.html', {'post_list': post_list,
+                                                      'bookmarked_post_id_list': bookmarked_post_id_list,})
 
 def blog_single(request):
     return render(request, 'blog-single.html')
@@ -69,6 +78,7 @@ def category(request, category_name):
     category_posts_list = paginator.get_page(page)
     bookmarked = list(bookmark.objects.all())
     bookmarked_post_id_list = list(map(int, bookmarked))
+    print(category_posts)
 
 
     return render(request, 'category.html', {'category_posts_list': category_posts_list,
