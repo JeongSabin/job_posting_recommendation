@@ -25,19 +25,23 @@ def likeSwitch(request):
         parms = json.loads(request.body)
         if(parms['like'] == 'on'):
             # 좋아요 등록 처리
-            print(parms['pk'])
+            bookmarked_post = bookmark(post_id = parms['pk'])
+            bookmarked_post.save()
             likes.append(parms['pk'])
             print(likes)
         elif(parms['like'] == 'off'):
+            bookmarked_post = bookmark.objects.get(post_id=parms['pk'])
+            bookmarked_post.delete()
             # 좋아요 취소 처리
             likes.remove(parms['pk'])
-            print('등록취소 로직추가예정')
+            print(likes)
 
         code = 'success'
     except Exception as e:
         code = 'fail'
 
     return JsonResponse({'code': code})
+
 
 def about_us(request):
     return render(request, 'about-us.html')
