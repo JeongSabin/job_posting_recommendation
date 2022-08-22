@@ -385,8 +385,8 @@ a:focus {
                                                     {% for data in category_posts_list %}
                                                         <div class="col-lg-4 col-md-6 col-12">
                                                         <div class="single-item-grid">
-                                                        <div class="image">
-                                                            <a href="item-details/{{ data.pk }}"><img src={{ data.picture_url }} alt="#"></a>
+                                                        <div class="image" >
+                                                            <a href="item-details/{{ data.pk }}"><img src={{ data.picture_url }}  width="100" height="300" alt="#"></a>
                                                             <span style = "font-family:  'Pretendard-Regular';" class="flat-badge sale">구인 중</span>
                                                         </div>
                                                         <div class="content">
@@ -432,7 +432,7 @@ a:focus {
                                                 <div class="pagination center" style = "font-family:  'Pretendard-Regular';">
                                                     <ul class="pagination-list">
                                                     {% if posts.has_previous %}
-                                                    <li><a href="?page={{posts.next_page_number}}"><i class="lni lni-chevron-left"></i></a></li>
+                                                    <li><a href="?page={{posts.page_number}}"><i class="lni lni-chevron-left"></i></a></li>
                                                     {% endif %}
 
                                                     {% for p in posts.paginator.page_range %}
