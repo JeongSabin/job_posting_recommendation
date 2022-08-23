@@ -50,6 +50,55 @@
                         <div class="row">
                             <div class="col-12" style="text-align: center;">
         <div style="text-align: center;">
+<style>
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.buttons {
+    margin: 10%;
+    text-align: center;
+}
+
+.btn-hover {
+    width: 200px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff;
+    cursor: pointer;
+    margin: 20px;
+    height: 55px;
+    text-align:center;
+    border: none;
+    background-size: 300% 100%;
+
+    border-radius: 50px;
+    moz-transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+}
+
+.btn-hover:hover {
+    background-position: 100% 0;
+    moz-transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+}
+
+.btn-hover:focus {
+    outline: none;
+}
+
+.btn-hover.color-3 {
+    background-image: linear-gradient(to right, #2c5bf0, #0f47d3, #667eea, #764ba2);
+    box-shadow: 0 4px 15px 0 rgba(116, 79, 168, 0.75);
+}
+
+</style>
           <br>
           <br>
           <h2 style = "font-family: 'HallymGothic-Bold'; color:262626;">북마크만 등록해도 나에게 딱 맞는 회사 추천!</h2><br><br>
@@ -58,19 +107,12 @@
           <br>
         <h6 style = "font-family: 'Pretendard-Bold'; color:#2c5bf0; line-height:1.6em; font-size: 13px;">내가 좋아한 기업을 기준으로 AI추천을 진행합니다.
           </h6>
-          <br>
-          <a href="http://127.0.0.1:8000/bookmark_recommendation.html">
-          <img src="/static/images/button.png" alt="recommendation" style="width: 70%; height: 70%;">
-              <br>
-              <div>
-                  <br>
-                  <br>
-                  <br>
-              </div>
-          </a>
-
-        </div>
-
+            <br>
+            <a href="http://127.0.0.1:8000/bookmark_recommendation.html">
+         <button style = "font-family: 'Pretendard-Regular'; max-width:10000px; width: 600px;" class="btn-hover color-3">&nbsp;&nbsp;&nbsp;&nbsp; AI 추천 공고 받으러 가기 &nbsp;&nbsp;&nbsp;&nbsp;</button>
+            <br>
+                </a>
+<br>
 
                             </div>
                         </div>
