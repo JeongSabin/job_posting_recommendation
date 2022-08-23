@@ -1,4 +1,4 @@
-from sklearn.preprocessing import StandardScaler, MinMaxScaler, QuantileTransformer
+from sklearn.preprocessing import MinMaxScaler
 import pandas as pd
 import glob
 

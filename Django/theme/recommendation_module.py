@@ -1,16 +1,9 @@
 import pandas as pd
 from sklearn.metrics.pairwise import linear_kernel
-import pickle
-from konlpy.tag import Okt
-import re
-from gensim.models import Word2Vec
 import numpy as np
 from sklearn.feature_extraction.text import TfidfVectorizer
-from scipy.io import mmwrite, mmread
-import glob
-from django.shortcuts import render
+from scipy.io import mmread
 from .models import *
-import os
 
 def Make_Tfidf_model(category_lst, post_list):
     def getRecommendation(cosin_sim, category_lst):
@@ -57,9 +50,8 @@ def Make_Tfidf_model(category_lst, post_list):
     cosine_sim2 = linear_kernel(work_vector, Tfidf_matrix_work)
 
     cosine_sim = cosine_sim1 * 0.25 + cosine_sim2 * 0.6 + np.array(concat_df['scaler_money'], np.float) * 0.15
-
     recommendation = getRecommendation(cosine_sim, category_lst)
-    recommendation = recommendation[6:16]
+    recommendation = recommendation[6:]
     return recommendation
 def cosin_sim_calculation(category, url):
     # 절대경로 변경

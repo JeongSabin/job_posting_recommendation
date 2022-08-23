@@ -1,13 +1,7 @@
 import pandas as pd
 from sklearn.metrics.pairwise import linear_kernel
-import pickle
-from konlpy.tag import Okt
-import re
-from gensim.models import Word2Vec
 import numpy as np
 from sklearn.feature_extraction.text import TfidfVectorizer
-from scipy.io import mmwrite, mmread
-import glob
 
 # 추천 받기 함수
 def getRecommendation(cosin_sim):

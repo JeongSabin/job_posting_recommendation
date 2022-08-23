@@ -1,12 +1,8 @@
-from turtle import back
 import pandas as pd
-import matplotlib.pyplot as plt
 from wordcloud import WordCloud
 import collections
-from matplotlib import font_manager, rc
+from matplotlib import rc
 import matplotlib.pyplot as plt
-import numpy as np
-from PIL import Image
 
 rc('font', family='AppleGothic')
 plt.rcParams['axes.unicode_minus'] = False

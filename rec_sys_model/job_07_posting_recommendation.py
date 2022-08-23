@@ -2,9 +2,6 @@ import pandas as pd
 from sklearn.metrics.pairwise import linear_kernel
 from scipy.io import mmread
 import pickle
-from konlpy.tag import Okt
-import re
-from gensim.models import Word2Vec
 import numpy as np
 
 def getRecommendation(cosin_sim):

@@ -1,6 +1,6 @@
 import pandas as pd
 from sklearn.feature_extraction.text import TfidfVectorizer
-from scipy.io import mmwrite, mmread
+from scipy.io import mmwrite
 import pickle
 import glob
 

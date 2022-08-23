@@ -1,7 +1,5 @@
 from selenium import webdriver
-from selenium.webdriver.chrome.options import Options
 import pandas as pd
-from selenium.common.exceptions import NoSuchElementException
 import time
 from selenium.webdriver.common.action_chains import ActionChains
 

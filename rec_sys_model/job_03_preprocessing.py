@@ -1,10 +1,6 @@
 import pandas as pd
 from konlpy.tag import Okt
 import re
-# import nltk
-# nltk.download("book", quiet=True)
-import nltk
-# nltk.download()
 from nltk.tokenize import word_tokenize
 
 df = pd.read_csv('./rec_sys_model/wanted/clear_data/All_clear_data.csv')

@@ -64,7 +64,7 @@ def bookmark_recommendation(request):
     company_list = []
     cnt = 0
     for i in lst:
-        if cnt < 6:
+        if cnt < 10:
             if post.objects.get(id=i).company not in company_list:
                 company_name = ''.join(post.objects.get(id=i).company)
                 company_name.replace(' ', '')
