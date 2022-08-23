@@ -59,10 +59,9 @@
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-12 col-12">
-                        <ul class="product-info" style = "font-family:  'Pretendard-Regular'; color: #2b2b2b;">
+                        <div class="product-info" style = "font-family:  'Pretendard-Regular'; color: #2b2b2b;">
                             <h2 class="title">{{ Post.title }}</h2>
                             <p class="location"><i class="lni lni-map-marker"></i><a href="javascript:void(0)">{{ Post.place }}</a></p>
-
                             <h3 class="price">{% if Post.money %}
                                                     {{ Post.money }} 만원
                                                 {% else %}
@@ -113,7 +112,7 @@
                         </div>
                     </div>
                 </div>
-
+            </div>
             <div style = "font-family:  'Pretendard-Regular'; color: #636363;"  class="item-details-blocks">
                 <div class="row">
                     <div class="col-lg-8 col-md-7 col-12" >
@@ -158,6 +157,7 @@
                             <div class="single-block tags">
                                 <h3>기술스택</h3>
                                 <tbody>
+
                                 {% for skill in post.skill_stack %}
                                 <tr>
                                     <li>
@@ -169,9 +169,8 @@
 
                                 <ul>
                                     {% for skill_stack_ in skills %}
-                                    <li><a href="javascript:void(10)">{{ skill_stack_ }}</a></li>
-{#                                <li><a href="javascript:void(0)">Services</a></li>#}
-{#                                <li><a href="javascript:void(0)">Brand</a></li>#}
+                                    <li><a style="font-family:  'Pretendard-Regular'; border-radius: 50px; background : #ebf1ff;" href="javascript:void(10)">{{ skill_stack_ }}</a></li>
+
 
                                     {% endfor %}
                             </ul>
@@ -231,7 +230,6 @@
                         </div>
                     </div>
                 </div>
-            </div>
 
 
     <!-- End Item Details -->
@@ -313,7 +311,7 @@
                     img.style.opacity = 1;
                 });
                 current.src = e.target.src;
-                //adding class 
+                //adding class
                 //current.classList.add("fade-in");
                 //opacity
                 e.target.style.opacity = opacity;
@@ -377,8 +375,7 @@
                 }
             })
         }
-
-        function sendPost2(e, pk) {
+            function sendPost2(e, pk) {
             // 좋아요 버튼이 빈하트이면 on 아니면 off
             const like = e.target.classList.contains('lni-heart')? 'on': 'off';
 
@@ -394,20 +391,18 @@
                 if(json.code == 'success') {
                     if(like == 'on') {
                         // 좋아요 등록 처리일 경우 빈하트 -> 하트로 변경
-                        e.target.classList.remove('lni-heart');
-                        e.target.classList.add('lni-heart-filled');
+                        e.target.classList.remove('lni-normal-heart');
+                        e.target.classList.add('lni-filled-heart');
                     } else if(like == 'off') {
                         // 좋아요 취소 처리일 경우 하트 -> 빈하트로 변경
-                        e.target.classList.remove('lni-heart-filled');
-                        e.target.classList.add('lni-heart');
+                        e.target.classList.remove('lni-filled-heart');
+                        e.target.classList.add('lni-normal-heart');
                     }
                 }
             })
         }
     </script>
 
-
 </body>
 {% include "footer.html" %}
 </html>
-
