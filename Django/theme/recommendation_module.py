@@ -76,5 +76,5 @@ def getRecommendation(category, cosin_sim):
 
 def recommendation_(category, cosine_sim):
     recommendation = getRecommendation(category, cosine_sim)
-    recommendation = recommendation[1:20]
+    recommendation = recommendation[1:]
     return recommendation
