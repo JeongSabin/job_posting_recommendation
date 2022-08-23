@@ -50,8 +50,6 @@ def bookmark_recommendation(request):
     bookmarked = list(bookmark.objects.all())
     bookmarked_post_id_list = list(map(int, bookmarked))
     post_list = post.objects.filter(id__in=bookmarked_post_id_list)
-    bookmarked = list(bookmark.objects.all())
-    bookmarked_post_id_list = list(map(int, bookmarked))
     category_lst = []
     for i in post_list:
         if i.category not in category_lst:
@@ -88,7 +86,8 @@ def blog_grid_sidebar(request):
     post_list = post.objects.filter(id__in=bookmarked_post_id_list)
 
 
-    return render(request, 'blog-grid-sidebar.html', {'post_list': post_list,})
+    return render(request, 'blog-grid-sidebar.html', {'post_list': post_list,
+                                                      'bookmarked_post_id_list': bookmarked_post_id_list})
 
 def blog_single(request):
     return render(request, 'blog-single.html')
@@ -177,9 +176,12 @@ def item_details(request, pk):
                 pass
         else:
             break
-    return render(request, 'item-details.html', {'Post':Post,
-                                                 'data_lst':data_lst
-                                                 ,'skills':skills})
+    bookmarked = list(bookmark.objects.all())
+    bookmarked_post_id_list = list(map(int, bookmarked))
+    return render(request, 'item-details.html', {'Post': Post,
+                                                 'data_lst': data_lst,
+                                                 'skills': skills,
+                                                 'bookmarked_post_id_list': bookmarked_post_id_list})
 
 def item_listing_grid(request):
     return render(request, 'item-listing-grid.html')
