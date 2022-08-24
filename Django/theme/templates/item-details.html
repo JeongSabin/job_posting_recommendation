@@ -62,7 +62,7 @@
                         <div class="product-info" style = "font-family:  'Pretendard-Regular'; color: #2b2b2b;">
                             <h2 class="title">{{ Post.title }}</h2>
                             <p class="location"><i class="lni lni-map-marker"></i><a href="javascript:void(0)">{{ Post.place }}</a></p>
-                            <h3 class="price">{% if Post.money %}
+                            <h3 class="price">{% if Post.money != '0' %}
                                                     {{ Post.money }} 만원
                                                 {% else %}
                                                     연봉정보 없음
@@ -70,14 +70,13 @@
 
 {#                                        좋아요 #}
                                         {% if Post.id in bookmarked_post_id_list %}
-                                        <a class="like">
-                                            <a  style="float: right; margin-right: 300px" class="lni-32 lni lni-heart-filled" onclick='sendPost2 (event, {{ Post.id }})' type="button"></a>
-
-                                        </a>
-                                    {% else %}
-                                        <a class="like">
-                                            <a  style="float: right; margin-right: 300px" class="lni lni-heart" onclick='sendPost2 (event, {{ Post.id }})' type="button"></a>
-                                        </a>
+                                            <a class="like">
+                                                <a  style="float: right; margin-right: 300px" class="lni-32 lni lni-heart-filled" onclick='sendPost (event, {{ Post.id }})' type="button"></a>
+                                            </a>
+                                        {% else %}
+                                            <a class="like">
+                                                <a  style="float: right; margin-right: 300px" class="lni lni-heart" onclick='sendPost (event, {{ Post.id }})' type="button"></a>
+                                            </a>
                                         {% endif %}</h3>
 
 
@@ -93,7 +92,7 @@
                                                                 연봉정보 없음
                                                             {% endif %}
                                     </li>
-                                    <li><span>직원수:</span> {{ Post.employee }}</li>
+                                    <li><span>직원수:</span> {{ Post.employee }} 명</li>
                                 </ul>
                             </div>
                             <div class="contact-info">
