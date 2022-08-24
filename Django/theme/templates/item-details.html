@@ -87,7 +87,7 @@
                                 <h4>Informations</h4>
                                 <ul>
                                     <li><span>회사명:</span> {{ Post.company }}</li>
-                                    <li><span>평균연봉:</span>{% if Post.money %}
+                                    <li><span>평균연봉:</span>{% if Post.money != '0' %}
                                                                 {{ Post.money }} 만원
                                                             {% else %}
                                                                 연봉정보 없음
@@ -157,7 +157,6 @@
                             <div class="single-block tags">
                                 <h3>기술스택</h3>
                                 <tbody>
-
                                 {% for skill in post.skill_stack %}
                                 <tr>
                                     <li>
@@ -230,6 +229,7 @@
                         </div>
                     </div>
                 </div>
+            </div>
 
 
     <!-- End Item Details -->
@@ -258,7 +258,7 @@
                         <p class="location" style = "font-family: 'Pretendard-Regular'; font-size:12px; "><a href="javascript:void(0)"><i class="lni lni-map-marker">
                                 </i>{{ data.company}}</a></p>
                         <ul class="info">
-                            <li class="price">{% if data.money %}
+                            <li class="price">{% if data.money != '0' %}
                                                     {{ data.money }} 만원
                                                 {% else %}
                                                     연봉정보 없음
